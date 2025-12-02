@@ -6,7 +6,7 @@ public class SnakeMover : MonoBehaviour
     public Transform target;
     public float speed = 2f;
 
-    public Action onDestroyed;   // <-- NEW callback
+    public Action onDestroyed;   
 
     private void Update()
     {

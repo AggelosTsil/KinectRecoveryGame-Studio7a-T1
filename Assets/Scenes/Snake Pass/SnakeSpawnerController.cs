@@ -19,11 +19,12 @@ public class SnakeSpawnerController : MonoBehaviour
 
     public Spawner rightSpawner;
     public Spawner leftSpawner;
+    
 
     public Transform commonTarget;
     public GameObject snakePrefab;
 
-    private GameObject activeSnake = null; // <-- NEW
+    private GameObject activeSnake = null; 
 
     private void Start()
     {
@@ -36,38 +37,27 @@ public class SnakeSpawnerController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawner.spawnInterval);
-
-            // Wait until the previously spawned snake is gone
             yield return new WaitUntil(() => activeSnake == null);
-
             SpawnSnake(spawner);
         }
     }
 
     private void SpawnSnake(Spawner spawner)
     {
-        GameObject snake = Instantiate(
-            snakePrefab,
-            spawner.spawnPoint.position,
-            Quaternion.identity
-        );
+        GameObject snake = Instantiate(snakePrefab, spawner.spawnPoint.position, Quaternion.identity);
 
-        activeSnake = snake; // <-- register active snake
+        activeSnake = snake; 
 
-        // LENGTH ONLY (z-axis)
+        // z-axis
         float length = Random.Range(spawner.lengthRange.x, spawner.lengthRange.y);
 
-        snake.transform.localScale = new Vector3(
-            length,   // thickness stays constant
-            0.1f,   // thickness stays constant
-            1f
-        );
+        snake.transform.localScale = new Vector3(length, 0.1f, 1f);
 
         SnakeMover mover = snake.AddComponent<SnakeMover>();
         mover.target = commonTarget;
         mover.speed = Random.Range(spawner.speedRange.x, spawner.speedRange.y);
 
-        // When snake dies, tell controller it's free again
+        // When snake dies
         mover.onDestroyed += () => activeSnake = null;
     }
 }
