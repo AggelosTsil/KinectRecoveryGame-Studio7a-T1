@@ -42,12 +42,14 @@ public class Wallchange : MonoBehaviour
             if (pose.poseModel == RightLeg)
             {
                 pose.poseModel = LeftLeg;
+                ChangeText.text = "Lift RIGHT Leg";
             }
             else
             {
                 pose.poseModel = RightLeg;
+                ChangeText.text = "Lift LEFT Leg";
             }
-            ChangeText.text = "Change";
+            //ChangeText.text = "Change";
         }
     }
 
