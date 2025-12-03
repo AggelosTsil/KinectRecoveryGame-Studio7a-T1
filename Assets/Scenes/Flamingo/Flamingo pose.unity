@@ -534,7 +534,7 @@ Transform:
   m_GameObject: {fileID: 539785599}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.04, y: 1.53, z: 0.5899999}
+  m_LocalPosition: {x: 0.04, y: 1.53, z: 2.81}
   m_LocalScale: {x: 1, y: 1, z: 0.5386323}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -796,7 +796,7 @@ Transform:
   m_GameObject: {fileID: 843965355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 1.88, z: 0.69}
+  m_LocalPosition: {x: -0.02, y: 1.88, z: 2.74}
   m_LocalScale: {x: 0.46148586, y: 0.46148586, z: 0.19567}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1247,10 +1247,10 @@ MonoBehaviour:
   autoHeightAngle: 0
   computeUserMap: 3
   computeColorMap: 0
-  computeInfraredMap: 0
+  computeInfraredMap: 1
   displayUserMap: 0
   displayColorMap: 0
-  displaySkeletonLines: 1
+  displaySkeletonLines: 0
   DisplayMapsWidthPercent: 20
   useMultiSourceReader: 0
   minUserDistance: 0.5

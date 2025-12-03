@@ -1333,7 +1333,7 @@ MonoBehaviour:
   offsetNode: {fileID: 0}
   posRelativeToCamera: {fileID: 2132550432}
   posRelOverlayColor: 0
-  groundedFeet: 1
+  groundedFeet: 0
   applyMuscleLimits: 1
   keepLastPose: 1
   horizontalOffset: 0
