@@ -49,16 +49,17 @@ public class SnakeSpawnerController : MonoBehaviour
     public void SpawnSnake(Spawner spawner)
     {
         KinectManager manager = KinectManager.Instance;
-        GameObject snake = Instantiate(snakePrefab, spawner.spawnPoint.position, Quaternion.identity);
 
-        //if (snakePrefab && manager && manager.IsInitialized() && manager.IsUserDetected(playerIndex))
-        //{
-        activeSnake = snake;
-        long userId = manager.GetUserIdByIndex(playerIndex);
-        Vector3 posUser = manager.GetUserPosition(userId);
 
-        // z-axis
-        float length = Random.Range(spawner.lengthRange.x, spawner.lengthRange.y);
+        if (snakePrefab && manager && manager.IsInitialized() && manager.IsUserDetected(playerIndex))
+        {
+            GameObject snake = Instantiate(snakePrefab, spawner.spawnPoint.position, Quaternion.identity);
+            activeSnake = snake;
+
+           
+
+            // z-axis
+            float length = Random.Range(spawner.lengthRange.x, spawner.lengthRange.y);
             
             snake.transform.localScale = new Vector3(length, 0.1f, 0.1f);
 
@@ -68,7 +69,7 @@ public class SnakeSpawnerController : MonoBehaviour
 
             // When snake dies
             mover.onDestroyed += () => activeSnake = null;
-        //}
+        }
     }
 
      void Update() {
