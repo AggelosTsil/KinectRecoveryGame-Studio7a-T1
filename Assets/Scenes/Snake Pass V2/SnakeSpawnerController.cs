@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SnakeSpawnerController : MonoBehaviour
 {
+    [Tooltip("Index of the player, tracked by this component. 0 means the 1st player, 1 - the 2nd one, 2 - the 3rd one, etc.")]
+    public int playerIndex = 0;
+    public GameObject puppet;
+
     [System.Serializable]
     public class Spawner
     {
@@ -26,7 +30,7 @@ public class SnakeSpawnerController : MonoBehaviour
 
     private GameObject activeSnake = null; 
 
-    private void Start()
+    void Start()
     {
         StartCoroutine(SpawnerRoutine(rightSpawner));
         StartCoroutine(SpawnerRoutine(leftSpawner));
@@ -42,22 +46,32 @@ public class SnakeSpawnerController : MonoBehaviour
         }
     }
 
-    private void SpawnSnake(Spawner spawner)
+    public void SpawnSnake(Spawner spawner)
     {
+        KinectManager manager = KinectManager.Instance;
         GameObject snake = Instantiate(snakePrefab, spawner.spawnPoint.position, Quaternion.identity);
 
-        activeSnake = snake; 
+        //if (snakePrefab && manager && manager.IsInitialized() && manager.IsUserDetected(playerIndex))
+        //{
+        activeSnake = snake;
+        long userId = manager.GetUserIdByIndex(playerIndex);
+        Vector3 posUser = manager.GetUserPosition(userId);
 
         // z-axis
         float length = Random.Range(spawner.lengthRange.x, spawner.lengthRange.y);
+            
+            snake.transform.localScale = new Vector3(length, 0.1f, 0.1f);
 
-        snake.transform.localScale = new Vector3(length, 0.1f, 1f);
+            SnakeMover mover = snake.AddComponent<SnakeMover>();
+            mover.target = commonTarget;
+            mover.speed = Random.Range(spawner.speedRange.x, spawner.speedRange.y);
 
-        SnakeMover mover = snake.AddComponent<SnakeMover>();
-        mover.target = commonTarget;
-        mover.speed = Random.Range(spawner.speedRange.x, spawner.speedRange.y);
+            // When snake dies
+            mover.onDestroyed += () => activeSnake = null;
+        //}
+    }
 
-        // When snake dies
-        mover.onDestroyed += () => activeSnake = null;
+     void Update() {
+        this.transform.position = new Vector3(puppet.transform.position.x, this.transform.position.y, puppet.transform.position.z);
     }
 }
