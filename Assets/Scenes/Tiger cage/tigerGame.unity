@@ -370,11 +370,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -1.0999999
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.25
+      value: -0.15999985
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1185,11 +1185,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.66
+      value: -2.76
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.25
+      value: -0.16
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1270,11 +1270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.9000001
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.25
+      value: -0.15999985
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1567,8 +1567,8 @@ GameObject:
   - component: {fileID: 2136572017}
   - component: {fileID: 2136572016}
   - component: {fileID: 2136572018}
-  - component: {fileID: 2136572019}
   - component: {fileID: 2136572020}
+  - component: {fileID: 2136572019}
   m_Layer: 0
   m_Name: KinectController
   m_TagString: Untagged
@@ -1662,9 +1662,9 @@ MonoBehaviour:
   avatarModel: {fileID: 1253256098}
   poseModel: {fileID: 365398769}
   poseJoints: 0f000000130000000d00000011000000
-  delayAllowed: 0.9
-  timeBetweenChecks: 0.1
-  matchThreshold: 0.805
+  delayAllowed: 0
+  timeBetweenChecks: 0
+  matchThreshold: 0.841
   infoText: {fileID: 718983935}
 --- !u!114 &2136572019
 MonoBehaviour:
@@ -1694,12 +1694,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pose: {fileID: 2136572018}
-  RepStep:
-  - {fileID: 0}
+  RepSteps:
   - {fileID: 365398769}
   - {fileID: 1220376019}
-  repseq: 0
-  expectingRep: 0
+  repstep: 0
+  NumberOfReps: 0
+  NumberOfErrors: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
