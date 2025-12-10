@@ -22,6 +22,10 @@ public class RepStepsManager : MonoBehaviour
 
     public float timer; //osi wra exei meinei sto rep malaka voosten gamw
 
+    public bool RestartRepOnFail; //if true it restarts the rep time every time there's an error
+
+    public float TempErrorTime; //time of error
+
     //public float MercyTime; //time before timer runs out that is ok to be out of pose
 
     //TO USE REPSTEP MANAGER MAKE SURE POSE DETECTOR HAS 0 SET IN DELAY AND 0 SET IN TIME-BETWEEN-CHECKS
@@ -44,6 +48,7 @@ public class RepStepsManager : MonoBehaviour
         {
             Debug.Log("Step "+ repstep + " done. Inside Rep " + NumberOfReps);
             timer -= Time.deltaTime;
+            TempErrorTime = 0;
             if (repstep < RepSteps.Length -1 && timer <= 0)
             {
 
@@ -53,6 +58,7 @@ public class RepStepsManager : MonoBehaviour
                 pose.poseModel = RepSteps[repstep];
                 Debug.Log("Pose model is "+ RepSteps[repstep]);
                 timer = PoseTime;
+                TempErrorTime = 0;
             }
             else if (timer <= 0)
             {
@@ -62,15 +68,36 @@ public class RepStepsManager : MonoBehaviour
                 pose.poseModel = RepSteps[repstep];
                 Debug.Log("Pose model is "+ RepSteps[repstep]);
                 timer = PoseTime;
+                TempErrorTime = 0;
             }
             
         }
+        else if (timer != PoseTime) 
+        {
+            if (RestartRepOnFail){
+                Debug.Log("Error kai kala " +  timer + " seconds in");
+                timer = PoseTime;
+                NumberOfErrors++;
+            }
+            else{
+                if(TempErrorTime!= timer){
+                    Debug.Log("Error kai kala " + timer + " seconds in");
+                    TempErrorTime = timer;
+                    NumberOfErrors++;
+                }else
+                    Debug.Log("Same error at " + timer);
+            }
+            
+        }
+        /*
+        OLD Version:
         else if (timer != PoseTime) 
         {
             Debug.Log("Error kai kala " +  timer + " seconds in");
             timer = PoseTime;
             NumberOfErrors++;
         }
+        */
     }
 
 }
