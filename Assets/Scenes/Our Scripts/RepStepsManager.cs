@@ -49,7 +49,7 @@ public class RepStepsManager : MonoBehaviour
             Debug.Log("Step "+ repstep + " done. Inside Rep " + NumberOfReps);
             timer -= Time.deltaTime;
             TempErrorTime = 0;
-            if (repstep < RepSteps.Length -1 && timer <= 0)
+            if (repstep < RepSteps.Length -1 && timer <= MercyTime)
             {
 
                 //ErrorCatcher (RepTime, Pose)
@@ -60,7 +60,7 @@ public class RepStepsManager : MonoBehaviour
                 timer = PoseTime;
                 TempErrorTime = 0;
             }
-            else if (timer <= 0)
+            else if (timer <= MercyTime)
             {
                 Debug.Log("Rep completed");
                 NumberOfReps++;

@@ -1702,6 +1702,9 @@ MonoBehaviour:
   NumberOfErrors: 0
   PoseTime: 10
   timer: 0
+  RestartRepOnFail: 1
+  TempErrorTime: 0
+  MercyTime: 0.8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
