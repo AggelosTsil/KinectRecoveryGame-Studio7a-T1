@@ -26,7 +26,7 @@ public class RepStepsManager : MonoBehaviour
 
     public float TempErrorTime; //time of error
 
-    //public float MercyTime; //time before timer runs out that is ok to be out of pose
+    public float MercyTime; //time before timer runs out that is ok to be out of pose
 
     //TO USE REPSTEP MANAGER MAKE SURE POSE DETECTOR HAS 0 SET IN DELAY AND 0 SET IN TIME-BETWEEN-CHECKS
     
@@ -72,7 +72,7 @@ public class RepStepsManager : MonoBehaviour
             }
             
         }
-        else if (timer != PoseTime) 
+        else if (timer != PoseTime || timer >= PoseTime + MercyTime) 
         {
             if (RestartRepOnFail){
                 Debug.Log("Error kai kala " +  timer + " seconds in");
