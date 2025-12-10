@@ -1700,6 +1700,8 @@ MonoBehaviour:
   repstep: 0
   NumberOfReps: 0
   NumberOfErrors: 0
+  PoseTime: 10
+  timer: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

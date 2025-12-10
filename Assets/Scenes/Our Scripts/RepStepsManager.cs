@@ -18,6 +18,12 @@ public class RepStepsManager : MonoBehaviour
 
     public int NumberOfErrors;
 
+    public float PoseTime;
+
+    public float timer; //osi wra exei meinei sto rep malaka voosten gamw
+
+    //public float MercyTime; //time before timer runs out that is ok to be out of pose
+
     //TO USE REPSTEP MANAGER MAKE SURE POSE DETECTOR HAS 0 SET IN DELAY AND 0 SET IN TIME-BETWEEN-CHECKS
     
     // Start is called before the first frame update
@@ -28,6 +34,7 @@ public class RepStepsManager : MonoBehaviour
         NumberOfReps = 0;
         NumberOfErrors = 0;
         pose.poseModel = RepSteps[repstep];
+        timer = PoseTime;
     }
 
     // Update is called once per frame
@@ -36,23 +43,33 @@ public class RepStepsManager : MonoBehaviour
         if (pose.IsPoseMatched())
         {
             Debug.Log("Step "+ repstep + " done. Inside Rep " + NumberOfReps);
-            
-            if (repstep < RepSteps.Length -1)
+            timer -= Time.deltaTime;
+            if (repstep < RepSteps.Length -1 && timer <= 0)
             {
+
+                //ErrorCatcher (RepTime, Pose)
                 Debug.Log("Moving to next step");
                 repstep ++;
                 pose.poseModel = RepSteps[repstep];
                 Debug.Log("Pose model is "+ RepSteps[repstep]);
+                timer = PoseTime;
             }
-            else
+            else if (timer <= 0)
             {
                 Debug.Log("Rep completed");
                 NumberOfReps++;
                 repstep = 0;
                 pose.poseModel = RepSteps[repstep];
                 Debug.Log("Pose model is "+ RepSteps[repstep]);
+                timer = PoseTime;
             }
             
+        }
+        else if (timer != PoseTime) 
+        {
+            Debug.Log("Error kai kala " +  timer + " seconds in");
+            timer = PoseTime;
+            NumberOfErrors++;
         }
     }
 
