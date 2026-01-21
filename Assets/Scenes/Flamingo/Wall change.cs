@@ -16,11 +16,11 @@ public class Wallchange : MonoBehaviour
 
     public Text ChangeText;
 
-    public SpriteRenderer flamingo_hat_spriteRenderer;
+    public SpriteRenderer flamingo_hat;
 
-    public SpriteRenderer flamingo_kariolis_spriteRenderer;
+    public SpriteRenderer flamingo_kariolis;
 
-    public SpriteRenderer flamingo_normal_spriteRenderer;
+    public SpriteRenderer flamingo_normal;
 
     public float Timer;
     public float ChangeTextLifespan;
@@ -33,9 +33,9 @@ public class Wallchange : MonoBehaviour
 
     void FlamingoFlip()
     {
-        flamingo_hat_spriteRenderer.flipX = !flamingo_hat_spriteRenderer.flipX;
-        flamingo_kariolis_spriteRenderer.flipX = !flamingo_kariolis_spriteRenderer.flipX;
-        flamingo_normal_spriteRenderer.flipX = !flamingo_normal_spriteRenderer.flipX;
+        flamingo_hat.flipX = !flamingo_hat.flipX;
+        flamingo_kariolis.flipX = !flamingo_kariolis.flipX;
+        flamingo_normal.flipX = !flamingo_normal.flipX;
     }
 
     // Update is called once per frame

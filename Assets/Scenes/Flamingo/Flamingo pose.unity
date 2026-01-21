@@ -558,9 +558,9 @@ MonoBehaviour:
   Footdown: {fileID: 2100000, guid: bb44e70e77ac7514ea334c5e5e1e8191, type: 2}
   Footup: {fileID: 2100000, guid: d0894ca9dd01463479cba61ac8522ed3, type: 2}
   ChangeText: {fileID: 609941406}
-  flamingo_hat_spriteRenderer: {fileID: 1177590085}
-  flamingo_kariolis_spriteRenderer: {fileID: 1701014597}
-  flamingo_normal_spriteRenderer: {fileID: 1894426401}
+  flamingo_hat: {fileID: 0}
+  flamingo_kariolis: {fileID: 0}
+  flamingo_normal: {fileID: 0}
   Timer: 8
   ChangeTextLifespan: 2
 --- !u!1 &609941403
@@ -738,6 +738,7 @@ GameObject:
   - component: {fileID: 718983936}
   - component: {fileID: 718983935}
   - component: {fileID: 718983934}
+  - component: {fileID: 718983937}
   m_Layer: 5
   m_Name: TextMatch
   m_TagString: Untagged
@@ -821,6 +822,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718983932}
   m_CullTransparentMesh: 1
+--- !u!114 &718983937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718983932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8b4dfbaa877a54ca16193830b0a7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 60
+  timertext: {fileID: 718983935}
 --- !u!1 &843965355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,7 +1152,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -329562281, guid: 60debd7313ebd30439157d7031550f0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
