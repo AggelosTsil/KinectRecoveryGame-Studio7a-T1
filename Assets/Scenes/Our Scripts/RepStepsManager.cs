@@ -78,12 +78,16 @@ public class RepStepsManager : MonoBehaviour
                 Debug.Log("Error kai kala " +  timer + " seconds in");
                 timer = PoseTime;
                 NumberOfErrors++;
+                string filename = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
+                ScreenCapture.CaptureScreenshot(filename);
             }
             else{
                 if(TempErrorTime!= timer){
                     Debug.Log("Error kai kala " + timer + " seconds in");
                     TempErrorTime = timer;
                     NumberOfErrors++;
+                    string filename = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
+                    ScreenCapture.CaptureScreenshot(filename);
                 }else
                     Debug.Log("Same error at " + timer);
             }
