@@ -1923,6 +1923,8 @@ GameObject:
   - component: {fileID: 2136572016}
   - component: {fileID: 2136572018}
   - component: {fileID: 2136572019}
+  - component: {fileID: 2136572020}
+  - component: {fileID: 2136572021}
   m_Layer: 0
   m_Name: KinectController
   m_TagString: Untagged
@@ -2035,6 +2037,65 @@ MonoBehaviour:
   playerIndex: 0
   foregroundCamera: {fileID: 862113980}
   depthImage: {fileID: 843965356}
+--- !u!114 &2136572020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136572015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed4f2399ef38ae4f94a1b3cd8171469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatarController: {fileID: 1253256095}
+--- !u!114 &2136572021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136572015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c1116a1ea0c0b824bb6af8601445778f, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2136572020}
+        m_TargetAssemblyTypeName: ChangePrimaryPlayer, Assembly-CSharp
+        m_MethodName: SwitchMainPlayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5264059e-2034-4f48-809e-6457c7576a4b
+    m_ActionName: ActionMap/New action[/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ActionMap
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2046,8 +2107,8 @@ SceneRoots:
   - {fileID: 862113981}
   - {fileID: 89965663}
   - {fileID: 1320639846}
-  - {fileID: 643418548}
   - {fileID: 2136572017}
   - {fileID: 539785603}
   - {fileID: 843965357}
+  - {fileID: 643418548}
   - {fileID: 900447463}

@@ -1,0 +1,34 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "ActionMap",
+            "id": "94a7a3bb-d0b3-4848-a739-5590e5c4a37e",
+            "actions": [
+                {
+                    "name": "Switch Main Player",
+                    "type": "Button",
+                    "id": "5264059e-2034-4f48-809e-6457c7576a4b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3e5fa4ba-39a8-4d12-b3a9-3b1d72bc8af8",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch Main Player",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
