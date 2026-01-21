@@ -558,6 +558,9 @@ MonoBehaviour:
   Footdown: {fileID: 2100000, guid: bb44e70e77ac7514ea334c5e5e1e8191, type: 2}
   Footup: {fileID: 2100000, guid: d0894ca9dd01463479cba61ac8522ed3, type: 2}
   ChangeText: {fileID: 609941406}
+  flamingo_hat_spriteRenderer: {fileID: 1177590085}
+  flamingo_kariolis_spriteRenderer: {fileID: 1701014597}
+  flamingo_normal_spriteRenderer: {fileID: 1894426401}
   Timer: 8
   ChangeTextLifespan: 2
 --- !u!1 &609941403

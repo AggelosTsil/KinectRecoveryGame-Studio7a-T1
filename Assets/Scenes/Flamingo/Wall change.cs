@@ -16,6 +16,12 @@ public class Wallchange : MonoBehaviour
 
     public Text ChangeText;
 
+    public SpriteRenderer flamingo_hat_spriteRenderer;
+
+    public SpriteRenderer flamingo_kariolis_spriteRenderer;
+
+    public SpriteRenderer flamingo_normal_spriteRenderer;
+
     public float Timer;
     public float ChangeTextLifespan;
     float TimerIni;
@@ -23,6 +29,19 @@ public class Wallchange : MonoBehaviour
     void Start()
     {
         TimerIni = Timer;
+    }
+
+    private void Awake()
+    {
+        flamingo_hat_spriteRenderer = GetComponent<SpriteRenderer>();
+        flamingo_kariolis_spriteRenderer = GetComponent<SpriteRenderer>();
+        flamingo_normal_spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    void FlamingoFlip()
+    {
+        flamingo_hat_spriteRenderer.flipX = true;
+        flamingo_kariolis_spriteRenderer.flipX = true;
+        flamingo_normal_spriteRenderer.flipX = true;
     }
 
     // Update is called once per frame
@@ -43,13 +62,15 @@ public class Wallchange : MonoBehaviour
             {
                 pose.poseModel = LeftLeg;
                 ChangeText.text = "Lift RIGHT Leg";
+                FlamingoFlip();
             }
             else
             {
                 pose.poseModel = RightLeg;
                 ChangeText.text = "Lift LEFT Leg";
+                FlamingoFlip();
+
             }
-            //ChangeText.text = "Change";
         }
     }
 
