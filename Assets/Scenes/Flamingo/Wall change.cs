@@ -31,17 +31,11 @@ public class Wallchange : MonoBehaviour
         TimerIni = Timer;
     }
 
-    private void Awake()
-    {
-        flamingo_hat_spriteRenderer = GetComponent<SpriteRenderer>();
-        flamingo_kariolis_spriteRenderer = GetComponent<SpriteRenderer>();
-        flamingo_normal_spriteRenderer = GetComponent<SpriteRenderer>();
-    }
     void FlamingoFlip()
     {
-        flamingo_hat_spriteRenderer.flipX = true;
-        flamingo_kariolis_spriteRenderer.flipX = true;
-        flamingo_normal_spriteRenderer.flipX = true;
+        flamingo_hat_spriteRenderer.flipX = !flamingo_hat_spriteRenderer.flipX;
+        flamingo_kariolis_spriteRenderer.flipX = !flamingo_kariolis_spriteRenderer.flipX;
+        flamingo_normal_spriteRenderer.flipX = !flamingo_normal_spriteRenderer.flipX;
     }
 
     // Update is called once per frame
