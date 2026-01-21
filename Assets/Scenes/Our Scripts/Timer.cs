@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
@@ -16,13 +17,19 @@ public class Timer : MonoBehaviour
     {
 
     }
+    public void BeginTimer(InputAction.CallbackContext context)
+    {
+        start = true;
+        Debug.Log("Timer started");
+    }
 
+    public void StopTimer(InputAction.CallbackContext context)
+    {
+        start = false;
+        Debug.Log("Timer stoped");
+    }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            start = true;
-        } //AGGELE KANTO SPACE anti gia mouse button
 
         if (start == true)
         {

@@ -13,6 +13,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Start Exercise",
+                    "type": "Button",
+                    "id": "946b54a5-61ef-40ef-8c66-40ba4114c6da",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stop Exercise",
+                    "type": "Button",
+                    "id": "e413189c-25df-4b91-a694-c3a9bf102aa1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "MultiTap(tapCount=3)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -24,6 +42,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Switch Main Player",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c542c544-7a8d-48ab-9a21-c02e6e2e0c68",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start Exercise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9ed1e17a-6fdf-4783-88bb-ff50d0f31592",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start Exercise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b561a460-cfb7-4a8b-9c10-db6982056657",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stop Exercise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

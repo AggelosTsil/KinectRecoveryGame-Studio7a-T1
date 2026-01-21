@@ -813,7 +813,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Try to match the pose on the left.
+  m_Text: 
 --- !u!222 &718983936
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -834,7 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8b4dfbaa877a54ca16193830b0a7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 60
+  timer: 20
   timertext: {fileID: 718983935}
 --- !u!1 &843965355
 GameObject:
@@ -2036,7 +2036,7 @@ MonoBehaviour:
   delayAllowed: 0.9
   timeBetweenChecks: 0.1
   matchThreshold: 0.805
-  infoText: {fileID: 718983935}
+  infoText: {fileID: 0}
 --- !u!114 &2136572019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2106,6 +2106,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5264059e-2034-4f48-809e-6457c7576a4b
     m_ActionName: ActionMap/New action[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 718983937}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: BeginTimer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 946b54a5-61ef-40ef-8c66-40ba4114c6da
+    m_ActionName: ActionMap/Start Exercise[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 718983937}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e413189c-25df-4b91-a694-c3a9bf102aa1
+    m_ActionName: ActionMap/Stop Exercise[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ActionMap
