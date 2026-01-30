@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float Power = 30;
+    public float Power = 0;
     public float MaxPower = 100;
 
     [SerializeField]
@@ -19,12 +19,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("d")){
-            SetPower(-20f);
-        }
-        if(Input.GetKeyDown("h")){
-            SetPower(+20f);
-        }
+        
     }
 
     public void SetPower(float powerChange){

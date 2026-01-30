@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Wallchange : MonoBehaviour
 {
     public PoseDetectorScript pose;
+    public Player player;
 
     public PoseModelHelper RightLeg;
     public PoseModelHelper LeftLeg;
@@ -73,10 +74,12 @@ public class Wallchange : MonoBehaviour
         if (pose.IsPoseMatched())
         {
             gameObject.GetComponent<MeshRenderer>().material = Footup;
+            player.SetPower(Time.deltaTime * 2);
         }
         else
         {
             gameObject.GetComponent<MeshRenderer>().material = Footdown;
+            player.SetPower(-Time.deltaTime);
         }
     }
 }

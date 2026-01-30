@@ -4,17 +4,22 @@ using UnityEngine;
 using Windows.Kinect;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Numerics;
+using UnityEditor.PackageManager.UI;
+using UnityEngine.iOS;
 
 public class ChangePrimaryPlayer : MonoBehaviour
 {
     public AvatarController avatarController;
     public GameObject MainPlayerIndicatorSTAR;
+    public float offset;
     Body mainBody = null; 
     private KinectSensor sensor;
     private BodyFrameReader bodyReader;
     private Body[] bodies;
     private List<ulong> trackedPlayerIds = new List<ulong>();
     private int mainPlayerIndex = 0;
+    public Camera kinectCamera;
     public ulong MainPlayerId {get; private set;}
     // Start is called before the first frame update
     void Start()
@@ -69,7 +74,18 @@ public class ChangePrimaryPlayer : MonoBehaviour
         {
             if (body.TrackingId == ID)
             {
-                Instantiate(MainPlayerIndicatorSTAR, new Vector3(0,3,0), Quaternion.identity); //creates the little star, has to change to picking from a list or just changes in the editor
+                Windows.Kinect.Joint headJoint = body.Joints[JointType.Head];
+                CameraSpacePoint headPosition = headJoint.Position;
+                UnityEngine.Vector3 UnityHeadPosition = new UnityEngine.Vector3(headPosition.X,headPosition.Y,0);
+                UnityEngine.Vector3 worldPosition = kinectCamera.transform.TransformPoint(UnityHeadPosition);
+                worldPosition.z = 0;
+                //UnityEngine.Vector3 offsetVector = UnityEngine.Vector3.up * offset;
+                
+                GameObject Indicator = Instantiate(MainPlayerIndicatorSTAR,worldPosition, UnityEngine.Quaternion.identity );//creates the little star, has to change to picking from a list or just changes in the editor
+                //Indicator.transform.position = worldPosition;
+                Debug.Log("indicator spawned at " + worldPosition);
+                return;
+            
             }
         }
     }

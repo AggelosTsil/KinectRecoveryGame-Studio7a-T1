@@ -11,6 +11,7 @@ public class RepStepsManager : MonoBehaviour
     public PoseModelHelper[] RepSteps;
 
     public int repstep;
+    public Player player;
 
     //public int expectingRep;
 
@@ -46,9 +47,11 @@ public class RepStepsManager : MonoBehaviour
     {
         if (pose.IsPoseMatched())
         {
+            player.SetPower(Time.deltaTime);
             Debug.Log("Step "+ repstep + " done. Inside Rep " + NumberOfReps);
             timer -= Time.deltaTime;
             TempErrorTime = 0;
+            
             if (repstep < RepSteps.Length -1 && timer <= MercyTime)
             {
 
@@ -74,6 +77,7 @@ public class RepStepsManager : MonoBehaviour
         }
         else if (timer != PoseTime || timer >= PoseTime + MercyTime) 
         {
+            player.SetPower(-Time.deltaTime);
             if (RestartRepOnFail){
                 Debug.Log("Error kai kala " +  timer + " seconds in");
                 timer = PoseTime;
