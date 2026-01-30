@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class ChangePrimaryPlayer : MonoBehaviour
 {
     public AvatarController avatarController;
+    public GameObject MainPlayerIndicatorSTAR;
     Body mainBody = null; 
     private KinectSensor sensor;
     private BodyFrameReader bodyReader;
@@ -59,5 +60,17 @@ public class ChangePrimaryPlayer : MonoBehaviour
 
         avatarController.playerIndex = mainPlayerIndex;
         Debug.Log("Main player is now TrackingId:" + MainPlayerId);
+        PlayerAnimation(MainPlayerId);
+    }
+
+    public void PlayerAnimation(ulong ID)
+    {
+        foreach (Body body in bodies)
+        {
+            if (body.TrackingId == ID)
+            {
+                Instantiate(MainPlayerIndicatorSTAR, new Vector3(0,3,0), Quaternion.identity); //creates the little star, has to change to picking from a list or just changes in the editor
+            }
+        }
     }
 }
