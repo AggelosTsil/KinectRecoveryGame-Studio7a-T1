@@ -74,7 +74,7 @@ public class Wallchange : MonoBehaviour
         if (pose.IsPoseMatched())
         {
             gameObject.GetComponent<MeshRenderer>().material = Footup;
-            player.SetPower(Time.deltaTime * 2);
+            player.SetPower(Time.deltaTime * 5);
         }
         else
         {

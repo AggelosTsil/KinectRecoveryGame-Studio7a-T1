@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public float Power = 0;
     public float MaxPower = 100;
+    public bool PowerReady;
+    public UnityEngine.UI.Image PowerReadyIndicator;
 
     [SerializeField]
     private PowerBarUI powerBar;
@@ -23,9 +28,24 @@ public class Player : MonoBehaviour
     }
 
     public void SetPower(float powerChange){
+
+        if (powerBar.Power > powerBar.MaxPower - 5) //player can do powerup at 95% power
+        {
+            Debug.Log("Power ready");
+            PowerReadyIndicator.color = Color.green;
+            PowerReady = true;
+        }
+        else if (PowerReady && (powerBar.Power < powerBar.MaxPower -5))
+        {
+            Debug.Log("Power wasted");
+            PowerReadyIndicator.color = Color.red;
+            PowerReady = false;
+        }
+
         Power += powerChange;
         Power = Mathf.Clamp(Power, 0, MaxPower);
 
         powerBar.SetPower(Power);
+
     }
 }

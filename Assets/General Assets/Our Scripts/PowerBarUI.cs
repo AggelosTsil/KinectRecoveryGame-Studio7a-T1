@@ -20,4 +20,11 @@ public class PowerBarUI : MonoBehaviour
 
         powerBar.sizeDelta = new Vector2(newWidth, Height);
     }
+
+    public void UsePower()
+    {
+        Debug.Log("POW use power");
+        //enter whatever the power does
+        SetPower(-50);
+    }
 }

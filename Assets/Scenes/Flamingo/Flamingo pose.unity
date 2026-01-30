@@ -1087,6 +1087,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Power: 30
   MaxPower: 100
+  PowerReady: 0
+  PowerReadyIndicator: {fileID: 1121818672}
   powerBar: {fileID: 1977579907}
 --- !u!4 &915938968
 Transform:
@@ -2284,9 +2286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatarController: {fileID: 1253256095}
-  MainPlayerIndicatorSTAR: {fileID: 0}
+  MainPlayerIndicatorSTAR: {fileID: 1969751080379926298, guid: 77e94fbad0801c045844800559b431a3, type: 3}
   offset: 0
-  kinectCamera: {fileID: 0}
+  kinectCamera: {fileID: 862113980}
 --- !u!114 &2136572021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,7 +2374,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136572015}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89bab9ada93f1ed46831c85ed717b403, type: 3}
   m_Name: 
