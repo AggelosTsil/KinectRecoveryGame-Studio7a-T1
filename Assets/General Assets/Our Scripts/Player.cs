@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private PowerBarUI powerBar;
+    public Flamingo flamingo;
     
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
         if (powerBar.Power > powerBar.MaxPower - 5) //player can do powerup at 95% power
         {
             Debug.Log("Power ready");
-            PowerReadyIndicator.color = Color.green;
+            PowerReadyIndicator.color = Color.yellow;
             PowerReady = true;
         }
         else if (PowerReady && (powerBar.Power < powerBar.MaxPower -5))
@@ -48,10 +49,11 @@ public class Player : MonoBehaviour
         powerBar.SetPower(Power);
 
     }
-    public void UsePower()
+    public void UsePower(string direction)
     {
         Debug.Log("POW use power");
         //enter whatever the power does
         SetPower(-50);
+        flamingo.GetPunched(direction);
     }
 }

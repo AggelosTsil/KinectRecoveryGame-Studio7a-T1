@@ -8,10 +8,11 @@ public class FlamingoInteraction : MonoBehaviour
     public PowerBarUI powerBar;
     public Player player;
     public KinectManager kinectManager;
+    public Flamingo flamingo;
     // Start is called before the first frame update
     void Start()
     {
-        gestureListener = CubeGestureListener.Instance; //I am not sure how instances work
+        //gestureListener = CubeGestureListener.Instance; //I am not sure how instances work
 
     }
 
@@ -22,12 +23,12 @@ public class FlamingoInteraction : MonoBehaviour
             if (Punch(GetLeftHandPos())) //if punched with left hand
             {
                 Debug.Log("punch LEFT"); //after player punches 
-                player.UsePower(); 
+                player.UsePower("LEFT"); 
             }
             else if (Punch(GetRightHandPos())) //if punched with right hand
             {
                 Debug.Log("punch RIGHT");
-                player.UsePower();
+                player.UsePower("RIGHT");
             }
         }
     }

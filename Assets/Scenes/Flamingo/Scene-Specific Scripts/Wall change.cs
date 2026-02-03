@@ -17,11 +17,7 @@ public class Wallchange : MonoBehaviour
 
     public Text ChangeText;
 
-    public SpriteRenderer flamingo_hat;
-
-    public SpriteRenderer flamingo_kariolis;
-
-    public SpriteRenderer flamingo_normal;
+    public SpriteRenderer[] flamingoSprites;
 
     public float Timer;
     public float ChangeTextLifespan;
@@ -30,13 +26,20 @@ public class Wallchange : MonoBehaviour
     void Start()
     {
         TimerIni = Timer;
+        CountFlamingos();
     }
 
     void FlamingoFlip()
     {
-        flamingo_hat.flipX = !flamingo_hat.flipX;
-        flamingo_kariolis.flipX = !flamingo_kariolis.flipX;
-        flamingo_normal.flipX = !flamingo_normal.flipX;
+        foreach (SpriteRenderer flamingo in flamingoSprites)
+        {
+            flamingo.flipX = true;
+        }
+    }
+
+    public void CountFlamingos() //Adds a flamingo to the flamingoSprites Array. Checks what cell to put them in
+    {
+        flamingoSprites = GetComponentsInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
