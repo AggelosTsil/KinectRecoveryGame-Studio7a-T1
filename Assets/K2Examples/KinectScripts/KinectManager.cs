@@ -8,6 +8,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 //using System.Linq;
 
 /// <summary>
@@ -3170,7 +3171,7 @@ public class KinectManager : MonoBehaviour
 //							}
 //						}
 				
-						foreach(KinectGestures.GestureListenerInterface listener in gestureListeners)
+						foreach(KinectGestures.GestureListenerInterface listener in gestureListeners.Cast<KinectGestures.GestureListenerInterface>())
 						{
 							if(listener != null && listener.GestureCompleted(userId, userIndex, gestureData.gesture, (KinectInterop.JointType)gestureData.joint, gestureData.screenPos))
 							{
@@ -3180,7 +3181,7 @@ public class KinectManager : MonoBehaviour
 					}
 					else if(gestureData.cancelled)
 					{
-						foreach(KinectGestures.GestureListenerInterface listener in gestureListeners)
+						foreach(KinectGestures.GestureListenerInterface listener in gestureListeners.Cast<KinectGestures.GestureListenerInterface>())
 						{
 							if(listener != null && listener.GestureCancelled(userId, userIndex, gestureData.gesture, (KinectInterop.JointType)gestureData.joint))
 							{
@@ -3205,7 +3206,7 @@ public class KinectManager : MonoBehaviour
 //							}
 //						}
 						
-						foreach(KinectGestures.GestureListenerInterface listener in gestureListeners)
+						foreach(KinectGestures.GestureListenerInterface listener in gestureListeners.Cast<KinectGestures.GestureListenerInterface>())
 						{
 							if(listener != null)
 							{
@@ -4358,7 +4359,7 @@ public class KinectManager : MonoBehaviour
 				}
 				
 				// notify all gesture listeners for the newly detected user
-				foreach(KinectGestures.GestureListenerInterface listener in gestureListeners)
+				foreach(KinectGestures.GestureListenerInterface listener in gestureListeners.Cast<KinectGestures.GestureListenerInterface>())
 				{
 					if(listener != null)
 					{
@@ -4398,7 +4399,7 @@ public class KinectManager : MonoBehaviour
 //		}
 
 		// notify all gesture listeners for losing this user
-		foreach(KinectGestures.GestureListenerInterface listener in gestureListeners)
+		foreach(KinectGestures.GestureListenerInterface listener in gestureListeners.Cast<KinectGestures.GestureListenerInterface>())
 		{
 			if(listener != null)
 			{

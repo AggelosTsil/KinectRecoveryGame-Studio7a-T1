@@ -9,6 +9,7 @@ using UnityEditor.PackageManager.UI;
 using UnityEngine.iOS;
 using Unity.VisualScripting;
 
+[RequireComponent(typeof(CubeGestureListener))]
 public class ChangePrimaryPlayer : MonoBehaviour
 {
     public AvatarController avatarController;
@@ -66,7 +67,8 @@ public class ChangePrimaryPlayer : MonoBehaviour
 
         avatarController.playerIndex = mainPlayerIndex;
         Debug.Log("Main player is now TrackingId:" + MainPlayerId);
-        PlayerAnimation(MainPlayerId);
+        PlayerAnimation(MainPlayerId); //plays little animation over players head
+        ChangeGestureListener(mainPlayerIndex); //Changes gesture listener to new main player
     }
 
     public void PlayerAnimation(ulong ID)
@@ -82,6 +84,11 @@ public class ChangePrimaryPlayer : MonoBehaviour
             
             }
         }
+    }
+
+    public void ChangeGestureListener(int index) //Makes sure the gestures listener stays on the main player
+    {
+        GetComponent<CubeGestureListener>().playerIndex = index;
     }
 
     public UnityEngine.Vector3 GetHeadPos()

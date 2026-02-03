@@ -495,7 +495,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb44e70e77ac7514ea334c5e5e1e8191, type: 2}
+  - {fileID: 2100000, guid: ad1776981464f7c48b01641d0dc3f2f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1031,14 +1031,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 900447463}
-  - component: {fileID: 900447464}
   m_Layer: 0
   m_Name: Flamingos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &900447463
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,21 +1056,6 @@ Transform:
   - {fileID: 1894426399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &900447464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900447462}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307006266ef97a547a5912678afc5dcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerBar: {fileID: 1977579907}
-  player: {fileID: 915938967}
-  kinectManager: {fileID: 0}
 --- !u!1 &915938966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,9 +2311,6 @@ GameObject:
   - component: {fileID: 2136572020}
   - component: {fileID: 2136572021}
   - component: {fileID: 2136572022}
-  - component: {fileID: 2136572024}
-  - component: {fileID: 2136572023}
-  - component: {fileID: 2136572025}
   m_Layer: 0
   m_Name: KinectController
   m_TagString: Untagged
@@ -2385,7 +2366,7 @@ MonoBehaviour:
   minTimeBetweenGestures: 0.7
   gestureManager: {fileID: 0}
   gestureListeners:
-  - {fileID: 900447464}
+  - {fileID: 0}
   calibrationText: {fileID: 0}
   gesturesDebugText: {fileID: 0}
   OnUserAdded:
@@ -2560,47 +2541,6 @@ MonoBehaviour:
   RestartRepOnFail: 0
   TempErrorTime: 0
   MercyTime: 0
---- !u!114 &2136572023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136572015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b1b10ec54ed18a4a9fd436da22030b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerIndex: 0
-  gestureInfo: {fileID: 0}
---- !u!114 &2136572024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136572015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60b976a1901bb5d478901026c07729cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2136572025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136572015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307006266ef97a547a5912678afc5dcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerBar: {fileID: 1977579907}
-  player: {fileID: 915938967}
-  kinectManager: {fileID: 2136572016}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

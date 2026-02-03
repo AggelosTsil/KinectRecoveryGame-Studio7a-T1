@@ -48,4 +48,10 @@ public class Player : MonoBehaviour
         powerBar.SetPower(Power);
 
     }
+    public void UsePower()
+    {
+        Debug.Log("POW use power");
+        //enter whatever the power does
+        SetPower(-50);
+    }
 }
