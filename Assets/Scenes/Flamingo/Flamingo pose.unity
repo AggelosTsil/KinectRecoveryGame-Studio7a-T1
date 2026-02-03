@@ -559,9 +559,9 @@ MonoBehaviour:
   Footdown: {fileID: 2100000, guid: bb44e70e77ac7514ea334c5e5e1e8191, type: 2}
   Footup: {fileID: 2100000, guid: d0894ca9dd01463479cba61ac8522ed3, type: 2}
   ChangeText: {fileID: 609941406}
-  flamingo_hat: {fileID: 0}
-  flamingo_kariolis: {fileID: 0}
-  flamingo_normal: {fileID: 0}
+  flamingo_hat: {fileID: 1177590085}
+  flamingo_kariolis: {fileID: 1701014597}
+  flamingo_normal: {fileID: 1894426401}
   Timer: 8
   ChangeTextLifespan: 2
 --- !u!1 &609941403
@@ -1553,15 +1553,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.25
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.05
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2185,13 +2185,13 @@ MonoBehaviour:
   sensorAngle: 0
   autoHeightAngle: 0
   computeUserMap: 3
-  computeColorMap: 0
+  computeColorMap: 1
   computeInfraredMap: 1
   displayUserMap: 0
   displayColorMap: 0
   displaySkeletonLines: 0
   DisplayMapsWidthPercent: 20
-  useMultiSourceReader: 0
+  useMultiSourceReader: 1
   minUserDistance: 0.5
   maxUserDistance: 0
   maxLeftRightDistance: 0
