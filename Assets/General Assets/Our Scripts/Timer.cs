@@ -35,13 +35,14 @@ public class Timer : MonoBehaviour
         {
 
             timer -= Time.deltaTime;
-
+       
             if (timer <= 0.0f)
             {
                 TimerEnded();
             }
 
             timertext.text = timer.ToString("n1");
+            
         }
     }
     void TimerEnded()
