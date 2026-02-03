@@ -2365,7 +2365,8 @@ MonoBehaviour:
   playerCommonGestures: 
   minTimeBetweenGestures: 0.7
   gestureManager: {fileID: 0}
-  gestureListeners: []
+  gestureListeners:
+  - {fileID: 0}
   calibrationText: {fileID: 0}
   gesturesDebugText: {fileID: 0}
   OnUserAdded:

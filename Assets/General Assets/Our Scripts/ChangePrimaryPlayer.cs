@@ -75,13 +75,6 @@ public class ChangePrimaryPlayer : MonoBehaviour
         {
             if (body.TrackingId == ID)
             {
-                //Windows.Kinect.Joint headJoint = body.Joints[JointType.Head];
-               // CameraSpacePoint headPosition = headJoint.Position;
-               // UnityEngine.Vector3 UnityHeadPosition = new UnityEngine.Vector3(headPosition.X,headPosition.Y,0);
-              //  UnityEngine.Vector3 worldPosition = kinectCamera.transform.TransformPoint(UnityHeadPosition);
-               // worldPosition.z = 0;
-                //UnityEngine.Vector3 offsetVector = UnityEngine.Vector3.up * offset;
-                
                 GameObject Indicator = Instantiate(MainPlayerIndicatorSTAR,GetHeadPos(), UnityEngine.Quaternion.identity );//creates the little star, has to change to picking from a list or just changes in the editor
                 //Indicator.transform.position = worldPosition;
                 Debug.Log("indicator spawned at " + GetHeadPos());
@@ -94,6 +87,6 @@ public class ChangePrimaryPlayer : MonoBehaviour
     public UnityEngine.Vector3 GetHeadPos()
     {
         Transform headT = transform.Find("HeadCollider");
-        return new UnityEngine.Vector3(headT.position.x, headT.position.y, headT.position.z);
+        return new UnityEngine.Vector3(headT.position.x, headT.position.y, headT.position.z - 1);
     }
 }
