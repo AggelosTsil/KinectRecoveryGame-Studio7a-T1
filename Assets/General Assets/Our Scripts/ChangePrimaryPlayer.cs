@@ -60,15 +60,18 @@ public class ChangePrimaryPlayer : MonoBehaviour
     }
     public void SwitchMainPlayer(InputAction.CallbackContext context) // callbackcontext is so that we can change the controls from the InputAction System. DONT TOUCH THIS SHIT
     {
-        if (trackedPlayerIds.Count == 0) return;
+        if (context.performed)
+        {
+            if (trackedPlayerIds.Count == 0) return;
 
-        mainPlayerIndex = (mainPlayerIndex + 1) % trackedPlayerIds.Count;
-        MainPlayerId = trackedPlayerIds[mainPlayerIndex];
+            mainPlayerIndex = (mainPlayerIndex + 1) % trackedPlayerIds.Count;
+            MainPlayerId = trackedPlayerIds[mainPlayerIndex];
 
-        avatarController.playerIndex = mainPlayerIndex;
-        Debug.Log("Main player is now TrackingId:" + MainPlayerId);
-        PlayerAnimation(MainPlayerId); //plays little animation over players head
-        ChangeGestureListener(mainPlayerIndex); //Changes gesture listener to new main player
+            avatarController.playerIndex = mainPlayerIndex;
+            Debug.Log("Main player is now TrackingId:" + MainPlayerId);
+            PlayerAnimation(MainPlayerId); //plays little animation over players head
+            ChangeGestureListener(mainPlayerIndex); //Changes gesture listener to new main player
+        }
     }
 
     public void PlayerAnimation(ulong ID)

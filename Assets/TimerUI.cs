@@ -4,28 +4,60 @@ using UnityEngine;
 using TMPro;
 using System.Timers;
 using System;
+using UnityEngine.InputSystem;
 public class TimerUI : MonoBehaviour
 {
     public TextMeshProUGUI UITimer;
     public float Timer;
+    public float AdjustSensitivity;
+    bool Active;
     // Start is called before the first frame update
     void Start()
     {
+        Active = false;
+    }
+
+    public void StartStop(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Active = !Active;
+            if (Active)
+            {
+                Debug.Log("Timer started");
+            }
+            else
+            {
+                Debug.Log("Timer stoped");
+            }
+        }
         
+    }
+
+    public void AdjustTime(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            float var = context.ReadValue<float>();
+            Timer -= var*AdjustSensitivity;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Timer > 0)
+        if (Active)
         {
-            Timer -= Time.deltaTime;
-            TimerActive();
-        }
-        else
-        {
-            Timer = 0;
-            TimerOver();
+            if (Timer > 0)
+            {
+                Timer -= Time.deltaTime;
+                TimerActive();
+            }
+            else
+            {
+                Timer = 0;
+                TimerOver();
+            }
         }
         
     }

@@ -27,7 +27,7 @@
                     "name": "Adjust Time",
                     "type": "Value",
                     "id": "aec88b0c-edd0-4d77-a43c-a78c269711a1",
-                    "expectedControlType": "",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -66,15 +66,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "0194a035-eb1e-4bb3-b652-4586e2899474",
-                    "path": "<Mouse>/scroll",
+                    "name": "upDown",
+                    "id": "a5b4fb93-a615-4d86-9147-56cda284e3be",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Adjust Time",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "5b172718-d785-4b3e-a942-e13a1a605728",
+                    "path": "<Mouse>/scroll/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Adjust Time",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a3d4ccfc-f37a-4027-8be1-e3dfb51ca854",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Adjust Time",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

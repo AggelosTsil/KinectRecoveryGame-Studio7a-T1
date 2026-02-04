@@ -34,6 +34,10 @@ public class ErrorCatcher : MonoBehaviour
 
     public void Screenshot(InputAction.CallbackContext context)
     {
-        PrintError();
+        if (context.performed)
+        {
+            PrintError();
+        }
+        
     }
 }
