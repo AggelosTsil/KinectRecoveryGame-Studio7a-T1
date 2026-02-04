@@ -774,34 +774,14 @@ GameObject:
   m_Component:
   - component: {fileID: 643418548}
   - component: {fileID: 643418547}
-  - component: {fileID: 643418546}
+  - component: {fileID: 643418549}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &643418546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643418545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_IsActive: 0
 --- !u!114 &643418547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,6 +812,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &643418549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643418545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: c1116a1ea0c0b824bb6af8601445778f, type: 3}
+  m_PointAction: {fileID: 0}
+  m_MoveAction: {fileID: 0}
+  m_SubmitAction: {fileID: 0}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &718983932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ebcde8f9202294c8a2fe4dc98527d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - {fileID: 610456390571029212, guid: 9d946ae7ffb5f7d489455a87e5111def, type: 3}
+  - {fileID: 2456800133499690504, guid: 5e6ba9f62096ba34d99e5265c1d95ac8, type: 3}
+  - {fileID: 9145187709860521372, guid: fe934c311a5b5b94980482c3fcff66f7, type: 3}
 --- !u!1 &915938966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,6 +2146,7 @@ GameObject:
   - component: {fileID: 2136572024}
   - component: {fileID: 2136572023}
   - component: {fileID: 2136572025}
+  - component: {fileID: 2136572026}
   m_Layer: 0
   m_Name: KinectController
   m_TagString: Untagged
@@ -2319,10 +2334,14 @@ MonoBehaviour:
     m_ActionId: 946b54a5-61ef-40ef-8c66-40ba4114c6da
     m_ActionName: ActionMap/Start Exercise[/Keyboard/space]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aec88b0c-edd0-4d77-a43c-a78c269711a1
+    m_ActionName: ActionMap/Adjust Time[/Mouse/scroll]
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 718983937}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: StopTimer
+      - m_Target: {fileID: 2136572026}
+        m_TargetAssemblyTypeName: ErrorCatcher, Assembly-CSharp
+        m_MethodName: Screenshot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2332,8 +2351,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: e413189c-25df-4b91-a694-c3a9bf102aa1
-    m_ActionName: ActionMap/Stop Exercise[/Mouse/rightButton]
+    m_ActionId: cf94ff47-6d19-4760-b6a5-b660298f2b6e
+    m_ActionName: ActionMap/Screenshot[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ActionMap
@@ -2404,6 +2423,18 @@ MonoBehaviour:
   player: {fileID: 915938967}
   kinectManager: {fileID: 2136572016}
   flamingo: {fileID: 900447464}
+--- !u!114 &2136572026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136572015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6941b3674ed3af468c0b351034607e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1690185157729039968
 PrefabInstance:
   m_ObjectHideFlags: 0
