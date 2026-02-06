@@ -688,8 +688,8 @@ MonoBehaviour:
   Footup: {fileID: 0}
   ChangeText: {fileID: 609941406}
   flamingoSprites: []
-  Timer: 0
-  ChangeTextLifespan: 0
+  Timer: 8
+  ChangeTextLifespan: 2
   CloudLeftAnim: {fileID: 42461831}
   CloudRightAnim: {fileID: 1727246367}
 --- !u!1 &609941403
