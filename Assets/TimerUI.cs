@@ -14,7 +14,16 @@ public class TimerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Active = false;
+        if (Type.GetType("DataManager") != null)
+        {
+            Timer = DataManager.instance.TransportValue;
+            Active = true;
+        }
+        else
+        {
+            //Timer = 5f;
+            Active = false;
+        }
     }
 
     public void StartStop(InputAction.CallbackContext context)
