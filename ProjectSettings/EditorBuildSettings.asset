@@ -4,6 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Menu/MainMenu.unity
+    guid: aab124df2b0c8f9d794193f8c4b7bd41
+  - enabled: 1
+    path: Assets/Scenes/Flamingo/Flamingo pose.unity
+    guid: 7bce2490edcbea346b2219a79dbf3e54
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 55996ed133bb1d3479852bf91957a1f7, type: 2}
