@@ -42,10 +42,10 @@ AnimationClip:
       value: {fileID: -848310520, guid: 60debd7313ebd30439157d7031550f0b, type: 3}
     - time: 2.55
       value: {fileID: -329562281, guid: 60debd7313ebd30439157d7031550f0b, type: 3}
-    - time: 2.75
+    - time: 2.7666667
       value: {fileID: -329562281, guid: 60debd7313ebd30439157d7031550f0b, type: 3}
     attribute: m_Sprite
-    path: Sprite
+    path: sprite
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -57,7 +57,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 850496168
+      path: 891129758
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -83,7 +83,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.7666667
+    m_StopTime: 2.7833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 3

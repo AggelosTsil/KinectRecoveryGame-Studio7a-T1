@@ -14,8 +14,8 @@ public class Flamingo : MonoBehaviour
 
     private void SpawnFlamingo(string direction)
     {
-        Vector3 SpawnPointLeft = new Vector3 (-2,-0.8f,0);
-        Vector3 SpawnPointRight = new Vector3 (4,-0.8f,0);
+        Vector3 SpawnPointLeft = new(-2,-0.8f,0);
+        Vector3 SpawnPointRight = new(4,-0.8f,0);
         GameObject selected = prefabs[0]; //doesnt like it unless i initialise it apparently
         int rng = Random.Range(1,5);
         Debug.Log("rng is " + rng);
@@ -33,17 +33,18 @@ public class Flamingo : MonoBehaviour
             break;
             
         }
+        GameObject fresh = null;
         if (direction == "LEFT")
         {
-            GameObject fresh = Instantiate(selected,this.transform);
+            fresh = Instantiate(selected,this.transform);
             fresh.transform.localPosition = SpawnPointLeft;
         }
         else if (direction == "RIGHT")
         {
-            GameObject fresh = Instantiate(selected,this.transform);
+            fresh = Instantiate(selected,this.transform);
             fresh.transform.localPosition = SpawnPointRight;
         }
-        GetComponentInParent<Wallchange>().CountFlamingos(); //wall change now counts this flamingo as a child too
+        GetComponentInParent<Wallchange>().flamingoSprites.Add(fresh.GetComponentInChildren<SpriteRenderer>()); //wall change now counts this flamingo as a child too
     }
 
     public void GetPunched(string direction)
@@ -60,6 +61,8 @@ public class Flamingo : MonoBehaviour
                     anim.SetTrigger("Left");
                     anim.SetTrigger("Death");
                     child.gameObject.tag = "dead";
+                     Debug.Log("removing " + child.GetComponentInChildren<SpriteRenderer>() + " SpriteRenderer");
+                    GetComponentInParent<Wallchange>().flamingoSprites.Remove(child.GetComponentInChildren<SpriteRenderer>());
 
                     //brings in next flamingo
                     Move(direction, origin);
@@ -76,6 +79,8 @@ public class Flamingo : MonoBehaviour
                     Vector3 origin = child.transform.localPosition;
                     child.GetComponent<Animator>().SetTrigger("Death");
                     child.gameObject.tag = "dead";
+                    Debug.Log("removing " + child.GetComponentInChildren<SpriteRenderer>() + " SpriteRenderer");
+                    GetComponentInParent<Wallchange>().flamingoSprites.Remove(child.GetComponentInChildren<SpriteRenderer>());
                     //brings in next flamingo
                     Move(direction, origin);
 
