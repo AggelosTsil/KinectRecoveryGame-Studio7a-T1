@@ -25,6 +25,7 @@ public class Patient : MonoBehaviour
     [Header("Diagnosis")]
    public String Diagnosis;
    public String Notes;
+   public int Sessions;
    #endregion
    
 

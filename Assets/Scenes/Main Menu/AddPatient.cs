@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AddPatient : MonoBehaviour
@@ -30,8 +31,11 @@ public class AddPatient : MonoBehaviour
    #endregion
 
     #region requirements
+    [Header("Requirements")]
     public GameObject Patient;
+    public GameObject Button;
     public GameObject AllPatients;
+    public GameObject ButtonList;
     #endregion
    public void OnClick()
     {
@@ -44,12 +48,14 @@ public class AddPatient : MonoBehaviour
    String Surname_Doctor, String Number_Doctor, String email_Doctor, String Diagnosis, String Notes)
     {
         var newPatient = Instantiate (Patient, AllPatients.transform);
+        var newpatientButton = Instantiate (Button, ButtonList.transform);
         var PatientData = newPatient.GetComponent<Patient>();
         if (Name == "")
         {
             Name = "-";
         }
-        newPatient.name = Name + Surname;
+        newPatient.name = Name + " "+Surname;
+        newpatientButton.name = Name + " "+Surname + " Button";
 
         PatientData.Name = Name;
         PatientData.Surname = Surname;
@@ -61,6 +67,15 @@ public class AddPatient : MonoBehaviour
         PatientData.email_Doctor = email_Doctor;
         PatientData.Diagnosis = Diagnosis;
         PatientData.Notes = Notes;
+        PatientData.Sessions = 0;
+
+        TextMeshProUGUI Button_Name = newpatientButton.transform.GetChild(0).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Button_Diagnosis = newpatientButton.transform.GetChild(0).transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Button_Sessions = newpatientButton.transform.GetChild(0).transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>();
+
+        Button_Name.text = Name + " "+Surname;
+        Button_Diagnosis.text = Diagnosis;
+        Button_Sessions.text = PatientData.Sessions.ToString();
     }
    
 }
