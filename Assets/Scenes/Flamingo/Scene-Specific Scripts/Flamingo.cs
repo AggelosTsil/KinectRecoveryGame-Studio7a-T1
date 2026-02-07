@@ -71,11 +71,11 @@ public class Flamingo : MonoBehaviour
         {
             foreach (Transform child in this.transform)
             {
-                if (child.transform.localPosition.x > 3)
+                if (child.transform.localPosition.x == 4)
                 {
                     Debug.Log("moving  " + child.gameObject + " to position " + pos);
                     //child.localPosition = Vector3.MoveTowards(child.localPosition, pos, Time.deltaTime * 0.1f);
-                    child.localPosition = pos;
+                    child.transform.localPosition = pos;
                 }
             }
         }
@@ -83,11 +83,11 @@ public class Flamingo : MonoBehaviour
         {
             foreach (Transform child in this.transform)
             {
-                if (child.transform.localPosition.x < -1)
+                if (child.transform.localPosition.x == -2)
                 {
                     Debug.Log("moving  " + child.gameObject + " to position " + pos);
                     //child.localPosition = Vector3.MoveTowards(child.localPosition, pos, Time.deltaTime * 0.1f);
-                    child.localPosition = pos;
+                    child.transform.localPosition = pos;
                 }
             }
         }
