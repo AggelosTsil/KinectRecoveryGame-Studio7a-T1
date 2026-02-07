@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AddPatient : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class AddPatient : MonoBehaviour
     public GameObject Button;
     public GameObject AllPatients;
     public GameObject ButtonList;
+    [Header("Stuff for the Patient Button To Inherit")]
+    public LoadPatient LoadPatient;
+    public GameObject[] OffStuff;
+    public GameObject[] OnStuff;
     #endregion
    public void OnClick()
     {
@@ -71,11 +76,22 @@ public class AddPatient : MonoBehaviour
 
         TextMeshProUGUI Button_Name = newpatientButton.transform.GetChild(0).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI Button_Diagnosis = newpatientButton.transform.GetChild(0).transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Button_Sessions = newpatientButton.transform.GetChild(0).transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>();
+
 
         Button_Name.text = Name + " "+Surname;
         Button_Diagnosis.text = Diagnosis;
-        Button_Sessions.text = PatientData.Sessions.ToString();
+        newpatientButton.GetComponentInChildren<Patient_Button>().Patient = newPatient;
+        newpatientButton.GetComponentInChildren<Button>().onClick.AddListener(newpatientButton.GetComponentInChildren<Patient_Button>().OnClick);
+        newpatientButton.GetComponentInChildren<Patient_Button>().LoadPatient = LoadPatient;
+        for (int i = 0; i < OffStuff.Length; i++ )
+        {
+            newpatientButton.GetComponentInChildren<Patient_Button>().OffStuff[i] = OffStuff[i];
+        }
+        for (int i = 0; i < OnStuff.Length; i++ )
+        {
+            newpatientButton.GetComponentInChildren<Patient_Button>().OnStuff[i] = OnStuff[i];
+        }
+    
     }
    
 }

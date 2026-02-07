@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2316660677654459720}
   - component: {fileID: 9023856712521259088}
   - component: {fileID: 1016502868248476807}
+  - component: {fileID: 1754566576810635328}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -122,7 +123,41 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9023856712521259088}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1754566576810635328}
+        m_TargetAssemblyTypeName: Patient_Button, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1754566576810635328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272001581864421528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b30a2148db790cdb1bc2415e2516f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Patient: {fileID: 0}
+  Sessions: 0
+  LoadPatient: {fileID: 0}
+  OffStuff:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  OnStuff:
+  - {fileID: 0}
 --- !u!1 &2728560928371363702
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +167,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5752489393859778934}
-  - component: {fileID: 7277042146967724752}
   m_Layer: 5
   m_Name: Patient_button
   m_TagString: Untagged
@@ -147,7 +181,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2728560928371363702}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -160,28 +194,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1282.8771, y: 90.2717}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7277042146967724752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2728560928371363702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2c03546b9a3e30da3c6fc1bcc5fe14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: 
-  Surname: 
-  Number: 
-  email: 
-  Name_Doctor: 
-  Surname_Doctor: 
-  Number_Doctor: 
-  email_Doctor: 
-  Diagnosis: 
-  Notes: 
 --- !u!1 &3741425210654269522
 GameObject:
   m_ObjectHideFlags: 0
