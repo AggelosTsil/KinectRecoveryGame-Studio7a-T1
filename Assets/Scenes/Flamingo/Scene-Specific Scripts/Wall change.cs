@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using TMPro;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,9 +39,16 @@ public class Wallchange : MonoBehaviour
         }
     }
 
-    public void CountFlamingos() //Adds a flamingo to the flamingoSprites Array. Checks what cell to put them in
+    public void CountFlamingos() //Adds a flamingo to the flamingoSprites Array. Also initialises 
     {
-        flamingoSprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach (Transform child in this.transform)
+        {
+            if (!child.gameObject.CompareTag("dead")) //fix for flamingos that are currently dying while CountFlamingos is called
+            {
+                flamingoSprites = GetComponentsInChildren<SpriteRenderer>();
+            }
+        }
+        
     }
 
     // Update is called once per frame

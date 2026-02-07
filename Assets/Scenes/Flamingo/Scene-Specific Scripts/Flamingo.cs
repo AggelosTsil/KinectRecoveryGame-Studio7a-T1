@@ -14,14 +14,36 @@ public class Flamingo : MonoBehaviour
 
     private void SpawnFlamingo(string direction)
     {
+        Vector3 SpawnPointLeft = new Vector3 (-2,-0.8f,0);
+        Vector3 SpawnPointRight = new Vector3 (4,-0.8f,0);
+        GameObject selected = prefabs[0]; //doesnt like it unless i initialise it apparently
+        int rng = Random.Range(1,5);
+        Debug.Log("rng is " + rng);
+        switch (rng)
+        {
+            case 1: selected = prefabs[0];
+            break;
+            case 2: selected = prefabs[0];
+            break;
+            case 3: selected = prefabs[1];
+            break;
+            case 4: selected = prefabs[2];
+            break;
+            default: Debug.Log("<color=red> op malakia </color>");
+            break;
+            
+        }
         if (direction == "LEFT")
         {
-            
+            GameObject fresh = Instantiate(selected,this.transform);
+            fresh.transform.localPosition = SpawnPointLeft;
         }
         else if (direction == "RIGHT")
         {
-            
+            GameObject fresh = Instantiate(selected,this.transform);
+            fresh.transform.localPosition = SpawnPointRight;
         }
+        GetComponentInParent<Wallchange>().CountFlamingos(); //wall change now counts this flamingo as a child too
     }
 
     public void GetPunched(string direction)
@@ -37,6 +59,7 @@ public class Flamingo : MonoBehaviour
                     Vector3 origin = child.transform.localPosition;
                     anim.SetTrigger("Left");
                     anim.SetTrigger("Death");
+                    child.gameObject.tag = "dead";
 
                     //brings in next flamingo
                     Move(direction, origin);
@@ -52,7 +75,7 @@ public class Flamingo : MonoBehaviour
                     Debug.Log("punched RIGHT");
                     Vector3 origin = child.transform.localPosition;
                     child.GetComponent<Animator>().SetTrigger("Death");
-
+                    child.gameObject.tag = "dead";
                     //brings in next flamingo
                     Move(direction, origin);
 
@@ -86,11 +109,12 @@ public class Flamingo : MonoBehaviour
                 if (child.transform.localPosition.x == -2)
                 {
                     Debug.Log("moving  " + child.gameObject + " to position " + pos);
-                    //child.localPosition = Vector3.MoveTowards(child.localPosition, pos, Time.deltaTime * 0.1f);
+                    //child.localPosition = Vector3.MoveTowards(child.localPosition, pos, Time.deltaTime * 1f);
                     child.transform.localPosition = pos;
                 }
             }
         }
+        SpawnFlamingo(direction);
     }
 
     // Update is called once per frame
