@@ -33,7 +33,7 @@ public class Wallchange : MonoBehaviour
     {
         foreach (SpriteRenderer flamingo in flamingoSprites)
         {
-            flamingo.flipX = true;
+            flamingo.flipX = !flamingo.flipX;
         }
     }
 
