@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using TMPro;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +16,11 @@ public class Wallchange : MonoBehaviour
     public PoseModelHelper LeftLeg;
     public Material Footdown;
     public Material Footup;
+    public GameObject FlamingoZone;
 
     public Text ChangeText;
 
-    public SpriteRenderer[] flamingoSprites;
+    public List<SpriteRenderer> flamingoSprites;
 
     public float Timer;
     public float ChangeTextLifespan;
@@ -33,13 +36,20 @@ public class Wallchange : MonoBehaviour
     {
         foreach (SpriteRenderer flamingo in flamingoSprites)
         {
-            flamingo.flipX = true;
+            flamingo.flipX = !flamingo.flipX;
         }
     }
 
-    public void CountFlamingos() //Adds a flamingo to the flamingoSprites Array. Checks what cell to put them in
+    public void CountFlamingos() //Adds a flamingo to the flamingoSprites Array. Also initialises <<After a couple of fixes this is kind of overenginnered but oh well>>
     {
-        flamingoSprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach (Transform child in FlamingoZone.transform)
+        {
+            if (!child.gameObject.CompareTag("dead")) //fix for flamingos that are currently dying while CountFlamingos is called
+            {
+                flamingoSprites.Add(child.Find("sprite").GetComponent<SpriteRenderer>());
+                Debug.Log("added " + child + " to list");
+            }
+        }
     }
 
     // Update is called once per frame
