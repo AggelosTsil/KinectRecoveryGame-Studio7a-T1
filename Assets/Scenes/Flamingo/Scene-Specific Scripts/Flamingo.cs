@@ -66,9 +66,11 @@ public class Flamingo : MonoBehaviour
 
                     //brings in next flamingo
                     Move(direction, origin);
+                    SpawnFlamingo(direction);
 
                     //removes punched flamingo
                     Destroy(child.gameObject, 3f);
+                    break;
                 }
             }
             else if (direction == "RIGHT")
@@ -83,9 +85,11 @@ public class Flamingo : MonoBehaviour
                     GetComponentInParent<Wallchange>().flamingoSprites.Remove(child.GetComponentInChildren<SpriteRenderer>());
                     //brings in next flamingo
                     Move(direction, origin);
+                    SpawnFlamingo(direction);
 
                     //removes punched flamingo
                     Destroy(child.gameObject, 3f);
+                    break;
 
                     
                 }
@@ -119,7 +123,6 @@ public class Flamingo : MonoBehaviour
                 }
             }
         }
-        SpawnFlamingo(direction);
     }
 
     // Update is called once per frame
