@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class GameSession
+{
+    public string sceneName;
+    public float durationSeconds;
+}
+
 public class Patient : MonoBehaviour
 {
     #region Patient
@@ -27,7 +34,11 @@ public class Patient : MonoBehaviour
    public String Notes;
    public int Sessions;
    #endregion
-   
+   #region Game Playlist
+[Header("Game Playlist")]
+public List<GameSession> GamePlaylist = new List<GameSession>();
+#endregion
+
 
  
 

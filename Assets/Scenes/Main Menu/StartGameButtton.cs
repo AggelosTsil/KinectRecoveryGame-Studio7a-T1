@@ -10,6 +10,7 @@ public class StartGameButtton : MonoBehaviour
 {
     public SceneAsset Scene;
     private Button button;
+    public Patient selectedPatient;
     public void Awake()
     {
         button = this.GetComponent<Button>();
@@ -23,6 +24,21 @@ public class StartGameButtton : MonoBehaviour
     }
     public void LoadScene()
     {
-        SceneManager.LoadScene(Scene.name);
+        DataManager.instance.CurrentPatient = selectedPatient;
+        DataManager.instance.CurrentPlaylist = selectedPatient.GamePlaylist;
+        DataManager.instance.CurrentGameIndex = 0;
+
+        LoadNextScene();
+    }
+    public static void LoadNextScene()
+    {
+        if (DataManager.instance.CurrentGameIndex >= DataManager.instance.CurrentPlaylist.Count)
+        {
+            SceneManager.LoadScene("MenuScene");
+            return;
+        }
+
+        string sceneName = DataManager.instance.CurrentPlaylist[DataManager.instance.CurrentGameIndex].sceneName;
+        SceneManager.LoadScene(sceneName);
     }
 }
