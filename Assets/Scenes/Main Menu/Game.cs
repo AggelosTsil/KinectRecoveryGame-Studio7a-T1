@@ -7,5 +7,9 @@ public class Game : MonoBehaviour
 {
   public int Gameid;
   public String Name;
-  public String Scene_Name;
+  public String SceneName;
+
+ 
+
+  
 }

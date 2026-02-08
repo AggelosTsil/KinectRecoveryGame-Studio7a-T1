@@ -30,15 +30,49 @@ public class StartGameButtton : MonoBehaviour
 
         LoadNextScene();
     }
-    public static void LoadNextScene()
+   public static void LoadNextScene()
+{
+    DataManager dm = DataManager.instance;
+    if (dm == null)
     {
-        if (DataManager.instance.CurrentGameIndex >= DataManager.instance.CurrentPlaylist.Count)
-        {
-            SceneManager.LoadScene("MenuScene");
-            return;
-        }
-
-        string sceneName = DataManager.instance.CurrentPlaylist[DataManager.instance.CurrentGameIndex].sceneName;
-        SceneManager.LoadScene(sceneName);
+        Debug.LogError("DataManager missing!");
+        return;
     }
+    if (dm.CurrentGameIndex >= dm.CurrentPlaylist.Count)
+    {
+        Debug.Log("Playlist finished → Loading Menu");
+        SceneManager.LoadScene("MenuScene");
+        return;
+    }
+
+    GameSession currentSession = dm.CurrentPlaylist[dm.CurrentGameIndex];
+
+    if (currentSession == null)
+    {
+        Debug.LogError("GameSession is NULL");
+        return;
+    }
+
+    if (currentSession.GamePrefab == null)
+    {
+        Debug.LogError("GamePrefab is NULL");
+        return;
+    }
+
+    Game gameData = currentSession.GamePrefab;
+
+    if (string.IsNullOrEmpty(gameData.SceneName))
+    {
+        Debug.LogError("SceneName is EMPTY on Game Prefab");
+        return;
+    }
+
+    dm.CurrentSceneDuration = currentSession.durationSeconds;
+
+    Debug.Log( "Loading Scene: " + gameData.SceneName + " | Duration: " + dm.CurrentSceneDuration);
+
+    
+    SceneManager.LoadScene(gameData.SceneName);
+}
+
 }

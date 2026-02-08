@@ -1,14 +1,43 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class LoadPatient : MonoBehaviour
 {
-    
-    public void LoadPatientData(GameObject Patient)
+    public Transform GameCardParent;     
+    public GameObject GameCardPrefab;    
+
+    public void LoadPatientData(GameObject patientGO)
     {
-        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Patient.name;
+        Patient patient = patientGO.GetComponent<Patient>();
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = patientGO.name;
+        DataManager.instance.CurrentPatient = patient;
+        ClearGameCards();
+        SpawnPlaylist(patient);
+    }
+
+    void ClearGameCards()
+    {
+        foreach (Transform child in GameCardParent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    void SpawnPlaylist(Patient patient)
+    {
+        foreach (GameSession session in patient.GamePlaylist)
+        {
+            GameObject cardGO = Instantiate(GameCardPrefab, GameCardParent);
+
+            GameCard card = cardGO.GetComponent<GameCard>();
+            card.Game = session.GamePrefab.gameObject;
+
+            // reuse session data
+            card.sessionData = session;
+
+        
+            
+        
+        }
     }
 }

@@ -10,6 +10,8 @@ public class DataManager : MonoBehaviour
     public Patient CurrentPatient;
     public List<GameSession> CurrentPlaylist = new List<GameSession>();
     public int CurrentGameIndex = 0;
+    public float CurrentSceneDuration;
+
 
 
     void Awake()

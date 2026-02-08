@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameSession
 {
-    public string sceneName;
+    public Game GamePrefab;
     public float durationSeconds;
 }
 
