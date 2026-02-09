@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Flamingo/Flamingo pose.unity
     guid: 7bce2490edcbea346b2219a79dbf3e54
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tiger cage/tigerGame.unity
     guid: 50144bcd8af775849ac5addd5f78e44e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1

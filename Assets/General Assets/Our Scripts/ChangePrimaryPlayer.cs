@@ -1,13 +1,8 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using Windows.Kinect;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using System.Numerics;
-using UnityEditor.PackageManager.UI;
-using UnityEngine.iOS;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(CubeGestureListener))]
 public class ChangePrimaryPlayer : MonoBehaviour
@@ -15,7 +10,7 @@ public class ChangePrimaryPlayer : MonoBehaviour
     public AvatarController avatarController;
     public GameObject MainPlayerIndicatorSTAR;
     public float offset;
-    Body mainBody = null; 
+    //Body mainBody = null; 
     private KinectSensor sensor;
     private BodyFrameReader bodyReader;
     private Body[] bodies;
