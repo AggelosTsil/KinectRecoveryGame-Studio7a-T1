@@ -15,14 +15,32 @@ public class DataManager : MonoBehaviour
 
 
     void Awake()
+{
+    if (instance == null)
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+        Debug.Log("DataManager Created → " + GetInstanceID());
     }
+    else if (instance != this)
+    {
+        Destroy(gameObject);
+    }
+
+
+}
+
+void OnEnable()
+{
+    Debug.Log("DataManager Enabled → " + GetInstanceID());
+}
+
+void OnDisable()
+{
+    Debug.Log("DataManager Disabled → " + GetInstanceID());
+}
+
+
 
    
 }
