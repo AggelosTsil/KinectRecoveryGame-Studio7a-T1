@@ -4,7 +4,7 @@ using UnityEngine;
 public class ChangeTheme : MonoBehaviour
 {
     private TMP_Dropdown themeDropdown;
-    public GameCard gameCard;   // ⭐ IMPORTANT
+    public GameCard gameCard; 
     void Awake()
     {
         themeDropdown = GetComponent<TMP_Dropdown>();
@@ -23,13 +23,15 @@ public class ChangeTheme : MonoBehaviour
         themeDropdown.ClearOptions();
         foreach (var theme in game.ThemesList)
         {
-            themeDropdown.options.Add(
-                new TMP_Dropdown.OptionData(theme.ThemeName));
+            themeDropdown.options.Add(new TMP_Dropdown.OptionData(theme.ThemeName));
         }
-        themeDropdown.onValueChanged.AddListener(OnThemeChanged);
-        // Load existing 
+
+        // THEN set value
         themeDropdown.value = gameCard.sessionData.SelectedThemeIndex;
+        themeDropdown.RefreshShownValue();
+        themeDropdown.onValueChanged.AddListener(OnThemeChanged);
     }
+
 
     void OnThemeChanged(int index)
     {
