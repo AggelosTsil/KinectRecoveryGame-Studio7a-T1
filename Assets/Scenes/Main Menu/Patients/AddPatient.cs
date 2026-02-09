@@ -30,6 +30,9 @@ public class AddPatient : MonoBehaviour
    public TMP_InputField Diagnosis;
    public TMP_InputField Notes;
    #endregion
+   [Header("Default Playlist")]
+    public List<GameSession> DefaultPlaylist = new List<GameSession>();
+
 
     #region requirements
     [Header("Requirements")]
@@ -91,6 +94,20 @@ public class AddPatient : MonoBehaviour
         {
             newpatientButton.GetComponentInChildren<Patient_Button>().OnStuff[i] = OnStuff[i];
         }
+
+
+
+       PatientData.GamePlaylist = new List<GameSession>();
+
+        foreach (var templateSession in DefaultPlaylist)
+        {
+            PatientData.GamePlaylist.Add(new GameSession()
+            {
+                GamePrefab = templateSession.GamePrefab,
+                durationSeconds = templateSession.durationSeconds
+            });
+        }
+
     
     }
    

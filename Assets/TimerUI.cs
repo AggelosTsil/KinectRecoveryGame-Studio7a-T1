@@ -11,12 +11,15 @@ public class TimerUI : MonoBehaviour
     public float Timer;
     public float AdjustSensitivity;
     bool Active;
+    bool finished = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (Type.GetType("DataManager") != null)
+        if (DataManager.instance != null)
+
         {
-            Timer = DataManager.instance.TransportValue;
+            Timer = DataManager.instance.CurrentSceneDuration;
             Active = true;
         }
         else
@@ -55,21 +58,22 @@ public class TimerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Active)
+        if (!Active || finished)
+            return;
+
+        if (Timer > 0)
         {
-            if (Timer > 0)
-            {
-                Timer -= Time.deltaTime;
-                TimerActive();
-            }
-            else
-            {
-                Timer = 0;
-                TimerOver();
-            }
+            Timer -= Time.deltaTime;
+            TimerActive();
         }
-        
+        else
+        {
+            finished = true;
+            Timer = 0;
+            TimerOver();
+        }
     }
+
 
     private void TimerActive()
     {
@@ -79,7 +83,14 @@ public class TimerUI : MonoBehaviour
     }
 
     private void TimerOver()
+{
+    UITimer.text = "Well Done!";
+
+    if (DataManager.instance != null)
     {
-        UITimer.text = "Well Done!";
+        DataManager.instance.CurrentGameIndex++;
+        StartGameButtton.LoadNextScene();
     }
+}
+
 }

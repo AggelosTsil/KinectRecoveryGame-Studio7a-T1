@@ -1382,8 +1382,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UITimer: {fileID: 917739543}
-  Timer: 5
-  AdjustSensitivity: 0
+  Timer: 10
+  AdjustSensitivity: 0.002
 --- !u!1 &1121818670
 GameObject:
   m_ObjectHideFlags: 0
