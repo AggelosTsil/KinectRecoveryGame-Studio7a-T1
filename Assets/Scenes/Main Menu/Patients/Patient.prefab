@@ -58,3 +58,5 @@ MonoBehaviour:
   email_Doctor: 
   Diagnosis: 
   Notes: 
+  Sessions: 0
+  GamePlaylist: []

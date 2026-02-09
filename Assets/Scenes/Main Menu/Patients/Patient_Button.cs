@@ -33,6 +33,7 @@ public class Patient_Button : MonoBehaviour
         {
             OnStuff[i].SetActive(true);
         }
+        DataManager.instance.CurrentPatient = Patient.GetComponent<Patient>();
         LoadPatient.LoadPatientData(Patient);
     }
 }

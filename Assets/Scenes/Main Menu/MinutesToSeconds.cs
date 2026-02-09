@@ -13,6 +13,8 @@ public class MinutesToSeconds : MonoBehaviour
     public GameObject MinutesGO;
     public GameObject SecondsGO;
     public MinutesToSeconds other;
+    public GameSession gameSession;   
+
     private float x;
     private float y;
 
@@ -46,9 +48,20 @@ public class MinutesToSeconds : MonoBehaviour
             else y = 0;
             x = other.x;
         }
-        //UnityEngine.Debug.Log(CalculateTime(x, y));
-        DataManager.instance.TransportValue = CalculateTime(x,y);
-        UnityEngine.Debug.Log(DataManager.instance.TransportValue);
+     
+        float finalTime = CalculateTime(x, y);
+
+        
+        if (gameSession != null)
+        {
+            gameSession.durationSeconds = finalTime;
+        }
+
+        // Old Start Button logic
+        //DataManager.instance.TransportValue = finalTime;
+
+        // UnityEngine.Debug.Log(finalTime);
+
 
     }
 
