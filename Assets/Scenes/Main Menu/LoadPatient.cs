@@ -35,9 +35,6 @@ public class LoadPatient : MonoBehaviour
             // reuse session data
             card.sessionData = session;
 
-        
-            
-        
         }
     }
 }

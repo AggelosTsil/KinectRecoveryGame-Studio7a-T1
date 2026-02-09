@@ -93,45 +93,54 @@ public class StartGameButtton : MonoBehaviour
     // ========================
     // LOAD NEXT SCENE
     // ========================
-    public static void LoadNextScene()
+ public static void LoadNextScene()
+{
+    DataManager dm = DataManager.instance;
+
+    if (dm == null)
     {
-        DataManager dm = DataManager.instance;
-
-        if (dm == null)
-        {
-            Debug.LogError("DataManager missing!");
-            return;
-        }
-
-        // End of playlist → Return menu
-        if (dm.CurrentGameIndex >= dm.CurrentPlaylist.Count)
-        {
-            Debug.Log("Playlist finished → Loading Menu");
-            SceneManager.LoadScene("MainMenu");
-            return;
-        }
-
-        GameSession currentSession = dm.CurrentPlaylist[dm.CurrentGameIndex];
-
-        if (currentSession == null || currentSession.GamePrefab == null)
-        {
-            Debug.LogError("Invalid GameSession!");
-            return;
-        }
-
-        Game gameData = currentSession.GamePrefab;
-
-        if (string.IsNullOrEmpty(gameData.SceneName))
-        {
-            Debug.LogError("SceneName missing on Game Prefab");
-            return;
-        }
-
-        // Save runtime duration
-        dm.CurrentSceneDuration = currentSession.durationSeconds;
-
-        Debug.Log($"Loading Scene → {gameData.SceneName} | Time → {dm.CurrentSceneDuration}");
-
-        SceneManager.LoadScene(gameData.SceneName);
+        Debug.LogError("DataManager missing");
+        return;
     }
+
+    if (dm.CurrentGameIndex >= dm.CurrentPlaylist.Count)
+    {
+        Debug.Log("Playlist Finished → Menu");
+
+        if (dm.CurrentPatient != null)
+            dm.CurrentPatient.Sessions++;
+
+        SceneManager.LoadScene("MenuScene");
+        return;
+    }
+
+    GameSession session =
+        dm.CurrentPlaylist[dm.CurrentGameIndex];
+
+    if (session == null || session.GamePrefab == null)
+    {
+        Debug.LogError("Invalid Session");
+        return;
+    }
+
+    Game game = session.GamePrefab;
+
+    if (game.ThemesList == null ||
+        game.ThemesList.Count == 0)
+    {
+        Debug.LogError("Game has no themes");
+        return;
+    }
+
+    // ⭐ If using reorder logic
+    Themes theme = game.ThemesList[0];
+
+    Debug.Log("Loading Theme Scene → " + theme.SceneName);
+
+    dm.CurrentSceneDuration =
+        session.durationSeconds;
+
+    SceneManager.LoadScene(theme.SceneName);
+}
+
 }

@@ -5,15 +5,13 @@ public class PlaylistDropZone : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("DROP CALLED");
+        Debug.Log("DROP CALLED YAYYY");
 
-        GameCardDrag drag =
-            eventData.pointerDrag.GetComponent<GameCardDrag>();
+        GameCardDrag drag = eventData.pointerDrag.GetComponent<GameCardDrag>();
 
         if (drag == null) return;
 
-        RectTransform draggedRect =
-            drag.GetComponent<RectTransform>();
+        RectTransform draggedRect = drag.GetComponent<RectTransform>();
 
         int newIndex = GetIndexFromPosition(draggedRect.position);
 

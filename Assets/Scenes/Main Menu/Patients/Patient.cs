@@ -8,6 +8,8 @@ public class GameSession
 {
     public Game GamePrefab;
     public float durationSeconds;
+    public int SelectedThemeIndex;
+
 }
 
 public class Patient : MonoBehaviour

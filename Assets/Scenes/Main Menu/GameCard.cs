@@ -10,9 +10,11 @@ public class GameCard : MonoBehaviour
 
     void Start()
     {
-        transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = Game.GetComponent<Game>().Name;
+        transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = Game.GetComponent<Game>().ExerciseName;
         SetupSession();
         LoadExistingTime();
+      
+
 
     }
 
