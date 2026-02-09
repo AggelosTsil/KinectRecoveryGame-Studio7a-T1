@@ -60,6 +60,7 @@ public class Flamingo : MonoBehaviour
                     Vector3 origin = child.transform.localPosition;
                     anim.SetTrigger("Left");
                     anim.SetTrigger("Death");
+                    child.GetComponentInChildren<AudioSource>().enabled = true;
                     child.gameObject.tag = "dead";
                      Debug.Log("removing " + child.GetComponentInChildren<SpriteRenderer>() + " SpriteRenderer");
                     GetComponentInParent<Wallchange>().flamingoSprites.Remove(child.GetComponentInChildren<SpriteRenderer>());
