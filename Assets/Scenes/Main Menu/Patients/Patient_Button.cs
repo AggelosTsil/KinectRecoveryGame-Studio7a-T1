@@ -11,6 +11,8 @@ public class Patient_Button : MonoBehaviour
    public GameObject Patient;
    public int Sessions;
    public LoadPatient LoadPatient;
+   public PatientButtonLoader patientButtonLoader;
+   public PatientEditPage patientEditPage;
 
 
    public GameObject[] OffStuff;
@@ -34,6 +36,10 @@ public class Patient_Button : MonoBehaviour
             OnStuff[i].SetActive(true);
         }
         DataManager.instance.CurrentPatient = Patient.GetComponent<Patient>();
-        LoadPatient.LoadPatientData(Patient);
+        patientButtonLoader.ClearButtons();
+        patientEditPage.OpenForPatient(DataManager.instance.CurrentPatient);
+
+       
+        
     }
 }

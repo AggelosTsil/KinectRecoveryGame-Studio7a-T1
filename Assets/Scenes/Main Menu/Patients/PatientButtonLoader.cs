@@ -11,6 +11,7 @@ public class PatientButtonLoader : MonoBehaviour
 
     [Header("Button Dependencies")]
     public LoadPatient LoadPatient;
+    public PatientEditPage patientEditPage;
     public GameObject[] OffStuff;
     public GameObject[] OnStuff;
 
@@ -21,11 +22,8 @@ public class PatientButtonLoader : MonoBehaviour
 
     public void CreateButtons()
     {
-        // Clear existing buttons (important when reopening page)
-        foreach (Transform child in ButtonListParent)
-        {
-            Destroy(child.gameObject);
-        }
+        
+       ClearButtons();
 
         foreach (Transform patientTransform in PatientsParent)
         {
@@ -35,6 +33,14 @@ public class PatientButtonLoader : MonoBehaviour
             if (patient == null) continue;
 
             CreateButtonForPatient(patientGO);
+        }
+    }
+
+    public void ClearButtons()
+    {
+         foreach (Transform child in ButtonListParent)
+        {
+            Destroy(child.gameObject);
         }
     }
 
@@ -72,10 +78,13 @@ public class PatientButtonLoader : MonoBehaviour
 
     pb.Patient = patientGO;
     pb.LoadPatient = LoadPatient;
+    pb.patientButtonLoader = GetComponent<PatientButtonLoader>();
+    pb.patientEditPage = patientEditPage;
 
     // ⭐ SAFE ARRAY COPY
     pb.OffStuff = new GameObject[OffStuff.Length];
     pb.OnStuff = new GameObject[OnStuff.Length];
+    
 
     for (int i = 0; i < OffStuff.Length; i++)
     {
