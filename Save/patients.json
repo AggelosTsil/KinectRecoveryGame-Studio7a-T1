@@ -11,7 +11,7 @@
             "DoctorEmail": "",
             "Diagnosis": "",
             "Notes": "",
-            "Sessions": 2,
+            "Sessions": 3,
             "Playlist": [
                 {
                     "GameID": 0,
@@ -22,7 +22,7 @@
                 },
                 {
                     "GameID": 0,
-                    "ThemeIndex": 0,
+                    "ThemeIndex": 2,
                     "Duration": 300.0,
                     "Reps": 0,
                     "Difficulty": 1.0

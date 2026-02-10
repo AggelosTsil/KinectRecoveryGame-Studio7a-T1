@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sky/Sky.unity
     guid: ac272c33c79e84d478ba6ad0b8d22aa8
+  - enabled: 1
+    path: Assets/Scenes/Flamingo/aggeloukos.unity
+    guid: 8afd9e18e7a478d4fb3fa598192a78d7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 55996ed133bb1d3479852bf91957a1f7, type: 2}
