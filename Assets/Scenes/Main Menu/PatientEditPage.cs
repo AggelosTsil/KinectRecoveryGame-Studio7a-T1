@@ -28,19 +28,18 @@ public class PatientEditPage : MonoBehaviour
 
     //Load
     public void OpenForPatient(Patient patient)
-{
-    DataManager.instance.CurrentPatient = patient;
+    {
+        DataManager.instance.CurrentPatient = patient;
 
-    gameObject.SetActive(true);
+        gameObject.SetActive(true);
 
-    LoadCurrentPatient(); // force load immediately
-}
+        LoadCurrentPatient(); // force load immediately
+    }
 
 
     void LoadCurrentPatient()
     {
-        Debug.Log("Loading Patient: " +
-    DataManager.instance.CurrentPatient);
+        Debug.Log("Loading Patient: " + DataManager.instance.CurrentPatient);
 
         CurrentPatient = DataManager.instance.CurrentPatient;
 
@@ -83,19 +82,12 @@ public class PatientEditPage : MonoBehaviour
         Debug.Log("Patient Updated + Saved");
     }
 
-   //Delete
+    //Delete
     public void DeletePatient()
     {
-       
-
-        DataManager.instance.AllPatients.Remove(
-            CurrentPatient.gameObject);
-
+        DataManager.instance.AllPatients.Remove(CurrentPatient.gameObject);
         Destroy(CurrentPatient.gameObject);
-
         DataManager.instance.SaveAllPatients();
-
-        
         Debug.Log("Patient Deleted");
     }
 
@@ -103,7 +95,6 @@ public class PatientEditPage : MonoBehaviour
     public void StartSession()
     {
         if (CurrentPatient == null) return;
-
         PlaylistPage.SetActive(true);
         gameObject.SetActive(false);
         PlaylistPage.GetComponent<LoadPatient>().LoadPatientData(DataManager.instance.CurrentPatient.gameObject);

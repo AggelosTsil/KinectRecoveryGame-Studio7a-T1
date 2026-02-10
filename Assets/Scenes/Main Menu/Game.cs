@@ -12,12 +12,12 @@ public class Themes
 }
 public class Game : MonoBehaviour
 {
-  public int Gameid;
-  public String ExerciseName;
-  public String SceneName;
+    public int Gameid;
+    public String ExerciseName;
+    public String SceneName;
 
-  [Header ("Themes")]
-  public List<Themes> ThemesList = new List<Themes>();
+    [Header("Themes")]
+    public List<Themes> ThemesList = new List<Themes>();
 
     void Update()
     {

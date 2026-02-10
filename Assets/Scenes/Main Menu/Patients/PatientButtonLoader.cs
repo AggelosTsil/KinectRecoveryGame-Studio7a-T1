@@ -22,8 +22,8 @@ public class PatientButtonLoader : MonoBehaviour
 
     public void CreateButtons()
     {
-        
-       ClearButtons();
+
+        ClearButtons();
 
         foreach (Transform patientTransform in PatientsParent)
         {
@@ -38,7 +38,7 @@ public class PatientButtonLoader : MonoBehaviour
 
     public void ClearButtons()
     {
-         foreach (Transform child in ButtonListParent)
+        foreach (Transform child in ButtonListParent)
         {
             Destroy(child.gameObject);
         }
@@ -46,55 +46,39 @@ public class PatientButtonLoader : MonoBehaviour
 
     void CreateButtonForPatient(GameObject patientGO)
     {
-        GameObject buttonGO =
-            Instantiate(ButtonPrefab, ButtonListParent);
+        GameObject buttonGO = Instantiate(ButtonPrefab, ButtonListParent);
+        Patient patient = patientGO.GetComponent<Patient>();
+        buttonGO.name = patient.Name + " " + patient.Surname + " Button";
 
-        Patient patient =
-            patientGO.GetComponent<Patient>();
+        // UI shit
+        TextMeshProUGUI nameText = buttonGO.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI diagnosisText = buttonGO.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
 
-        buttonGO.name =
-            patient.Name + " " + patient.Surname + " Button";
+        nameText.text = patient.Name + " " + patient.Surname;
 
-        // ===== UI TEXT =====
-        TextMeshProUGUI nameText =
-            buttonGO.transform.GetChild(0)
-            .GetChild(0)
-            .GetComponent<TextMeshProUGUI>();
+        diagnosisText.text = patient.Diagnosis;
 
-        TextMeshProUGUI diagnosisText =
-            buttonGO.transform.GetChild(0)
-            .GetChild(1)
-            .GetComponent<TextMeshProUGUI>();
+        // Stuff The button needs because I could not set them to the prefab for some reson??
+        Patient_Button pb = buttonGO.GetComponentInChildren<Patient_Button>();
 
-        nameText.text =
-            patient.Name + " " + patient.Surname;
+        pb.Patient = patientGO;
+        pb.LoadPatient = LoadPatient;
+        pb.patientButtonLoader = GetComponent<PatientButtonLoader>();
+        pb.patientEditPage = patientEditPage;
 
-        diagnosisText.text =
-            patient.Diagnosis;
+        pb.OffStuff = new GameObject[OffStuff.Length];
+        pb.OnStuff = new GameObject[OnStuff.Length];
 
-        // ===== BUTTON SCRIPT SETUP =====
-            Patient_Button pb =
-        buttonGO.GetComponentInChildren<Patient_Button>();
 
-    pb.Patient = patientGO;
-    pb.LoadPatient = LoadPatient;
-    pb.patientButtonLoader = GetComponent<PatientButtonLoader>();
-    pb.patientEditPage = patientEditPage;
+        for (int i = 0; i < OffStuff.Length; i++)
+        {
+            pb.OffStuff[i] = OffStuff[i];
+        }
 
-    // ⭐ SAFE ARRAY COPY
-    pb.OffStuff = new GameObject[OffStuff.Length];
-    pb.OnStuff = new GameObject[OnStuff.Length];
-    
-
-    for (int i = 0; i < OffStuff.Length; i++)
-    {
-        pb.OffStuff[i] = OffStuff[i];
-    }
-
-    for (int i = 0; i < OnStuff.Length; i++)
-    {
-        pb.OnStuff[i] = OnStuff[i];
-    }
+        for (int i = 0; i < OnStuff.Length; i++)
+        {
+            pb.OnStuff[i] = OnStuff[i];
+        }
 
     }
 }

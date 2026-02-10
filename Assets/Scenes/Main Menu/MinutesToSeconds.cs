@@ -13,11 +13,9 @@ public class MinutesToSeconds : MonoBehaviour
     public GameObject MinutesGO;
     public GameObject SecondsGO;
     public MinutesToSeconds other;
-    public GameSession gameSession;   
-
+    public GameSession gameSession;
     private float x;
     private float y;
-
     public void Update()
     {
         if (this.GetComponent<TMP_InputField>().text == "") this.GetComponent<TMP_InputField>().text = "00";
@@ -48,10 +46,10 @@ public class MinutesToSeconds : MonoBehaviour
             else y = 0;
             x = other.x;
         }
-     
+
         float finalTime = CalculateTime(x, y);
 
-        
+
         if (gameSession != null)
         {
             gameSession.durationSeconds = finalTime;
@@ -73,7 +71,7 @@ public class MinutesToSeconds : MonoBehaviour
         float value2 = y;
         float FinalTime = value1 + value2;
         return FinalTime;
-        
+
     }
 
 }

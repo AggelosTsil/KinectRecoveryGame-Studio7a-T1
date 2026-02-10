@@ -13,9 +13,6 @@ public class GameCard : MonoBehaviour
         transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = Game.GetComponent<Game>().name;
         SetupSession();
         LoadExistingTime();
-      
-
-
     }
 
     void SetupSession()
@@ -23,7 +20,7 @@ public class GameCard : MonoBehaviour
         if (sessionData == null)
             sessionData = new GameSession();
 
-       sessionData.GamePrefab = Game.GetComponent<Game>();
+        sessionData.GamePrefab = Game.GetComponent<Game>();
 
 
         if (minutesScript != null)
@@ -34,19 +31,19 @@ public class GameCard : MonoBehaviour
     }
 
     void LoadExistingTime()
-{
-    if (sessionData == null) return;
+    {
+        if (sessionData == null) return;
 
-    int minutes = Mathf.FloorToInt(sessionData.durationSeconds / 60f);
-    int seconds = Mathf.FloorToInt(sessionData.durationSeconds % 60f);
+        int minutes = Mathf.FloorToInt(sessionData.durationSeconds / 60f);
+        int seconds = Mathf.FloorToInt(sessionData.durationSeconds % 60f);
 
-    if (minutesScript != null)
-        minutesScript.GetComponent<TMP_InputField>().text =
-            minutes.ToString("00");
+        if (minutesScript != null)
+            minutesScript.GetComponent<TMP_InputField>().text =
+                minutes.ToString("00");
 
-    if (secondsScript != null)
-        secondsScript.GetComponent<TMP_InputField>().text =
-            seconds.ToString("00");
-}
+        if (secondsScript != null)
+            secondsScript.GetComponent<TMP_InputField>().text =
+                seconds.ToString("00");
+    }
 
 }

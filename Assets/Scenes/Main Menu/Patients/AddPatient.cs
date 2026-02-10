@@ -75,24 +75,24 @@ public class AddPatient : MonoBehaviour
 
     newPatient.name = Name + " " + Surname;
 
-    // ===== PATIENT DATA =====
+   
     PatientData.Name = Name;
     PatientData.Surname = Surname;
     PatientData.Number = Number;
     PatientData.email = email;
 
-    // ===== DOCTOR =====
+  
     PatientData.Name_Doctor = Name_Doctor;
     PatientData.Surname_Doctor = Surname_Doctor;
     PatientData.Number_Doctor = Number_Doctor;
     PatientData.email_Doctor = email_Doctor;
 
-    // ===== MEDICAL =====
+
     PatientData.Diagnosis = Diagnosis;
     PatientData.Notes = Notes;
     PatientData.Sessions = 0;
 
-    // ===== DEFAULT PLAYLIST =====
+    //creates a ""default"" playlist, no longer in use for use but I am afraid to delete it there are like 100 scripts here
     PatientData.GamePlaylist = new List<GameSession>();
 
     foreach (var templateSession in DefaultPlaylist)
@@ -104,7 +104,7 @@ public class AddPatient : MonoBehaviour
         });
     }
 
-    // ===== REGISTER IN DATAMANAGER =====
+    //datamanager
     DataManager.instance.AllPatients.Add(newPatient);
     DataManager.instance.SaveAllPatients();
 

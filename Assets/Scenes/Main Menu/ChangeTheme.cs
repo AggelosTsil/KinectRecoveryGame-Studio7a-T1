@@ -4,7 +4,7 @@ using UnityEngine;
 public class ChangeTheme : MonoBehaviour
 {
     private TMP_Dropdown themeDropdown;
-    public GameCard gameCard; 
+    public GameCard gameCard;
     void Awake()
     {
         themeDropdown = GetComponent<TMP_Dropdown>();
@@ -26,7 +26,6 @@ public class ChangeTheme : MonoBehaviour
             themeDropdown.options.Add(new TMP_Dropdown.OptionData(theme.ThemeName));
         }
 
-        // THEN set value
         themeDropdown.value = gameCard.sessionData.SelectedThemeIndex;
         themeDropdown.RefreshShownValue();
         themeDropdown.onValueChanged.AddListener(OnThemeChanged);
@@ -39,7 +38,6 @@ public class ChangeTheme : MonoBehaviour
         Debug.Log("Theme changed → " + gameCard.sessionData.GamePrefab.ThemesList[index].ThemeName);
         Debug.Log("Session theme now → " + gameCard.sessionData.SelectedThemeIndex);
         DataManager.instance.SaveAllPatients();
-
 
     }
 }

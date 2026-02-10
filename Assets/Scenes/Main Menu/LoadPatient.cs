@@ -3,8 +3,16 @@ using UnityEngine;
 
 public class LoadPatient : MonoBehaviour
 {
-    public Transform GameCardParent;     
-    public GameObject GameCardPrefab;    
+    public Transform GameCardParent;
+    public GameObject GameCardPrefab;
+
+    void OnEnable()
+    {
+        if (DataManager.instance.CurrentPatient != null)
+        {
+            LoadPatientData(DataManager.instance.CurrentPatient.gameObject);
+        }
+    }
 
     public void LoadPatientData(GameObject patientGO)
     {
@@ -32,7 +40,6 @@ public class LoadPatient : MonoBehaviour
             GameCard card = cardGO.GetComponent<GameCard>();
             card.Game = session.GamePrefab.gameObject;
 
-            // reuse session data
             card.sessionData = session;
 
         }

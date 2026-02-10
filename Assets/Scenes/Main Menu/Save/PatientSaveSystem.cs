@@ -4,21 +4,28 @@ using UnityEngine;
 
 public static class PatientSaveSystem
 {
-    static string SavePath =>
-        Application.persistentDataPath + "/patients.json";
+    static string SavePath => Path.Combine(Directory.GetParent(Application.dataPath).FullName, "Save") + "/patients.json";
+
 
     public static void Save(List<PatientSaveData> patients)
     {
+        string directory = Path.GetDirectoryName(SavePath);
+        if (!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+            Debug.Log(directory + " directory created");
+        }
+
         PatientSaveWrapper wrapper = new PatientSaveWrapper();
         wrapper.Patients = patients;
 
-        string json =
-            JsonUtility.ToJson(wrapper, true);
+        string json = JsonUtility.ToJson(wrapper, true);
 
         File.WriteAllText(SavePath, json);
 
         Debug.Log("Saved Patients → " + SavePath);
     }
+
 
     public static List<PatientSaveData> Load()
     {

@@ -14,13 +14,10 @@ public class StartGameButtton : MonoBehaviour
 
     void Update()
     {
-        // Enable only if patient + playlist exists
+        // Enable only if patient and playlist exists
         var dm = DataManager.instance;
 
-        if (dm == null ||
-            dm.CurrentPatient == null ||
-            dm.CurrentPatient.GamePlaylist == null ||
-            dm.CurrentPatient.GamePlaylist.Count == 0)
+        if (dm == null || dm.CurrentPatient == null || dm.CurrentPatient.GamePlaylist == null || dm.CurrentPatient.GamePlaylist.Count == 0)
         {
             button.interactable = false;
             return;
@@ -30,9 +27,7 @@ public class StartGameButtton : MonoBehaviour
 
         foreach (var s in dm.CurrentPatient.GamePlaylist)
         {
-            if (s == null ||
-                s.GamePrefab == null ||
-                s.durationSeconds <= 0)
+            if (s == null || s.GamePrefab == null || s.durationSeconds <= 0)
             {
                 allValid = false;
                 break;
@@ -43,9 +38,7 @@ public class StartGameButtton : MonoBehaviour
 
     }
 
-    // =========================================
     // START SESSION
-    // =========================================
     public void StartGame()
     {
         StartPlaylist(DataManager.instance.CurrentPatient);
@@ -53,9 +46,8 @@ public class StartGameButtton : MonoBehaviour
         DataManager.instance.SaveAllPatients();
     }
 
-    // =========================================
+
     // COPY PATIENT PLAYLIST → RUNTIME PLAYLIST
-    // =========================================
     public static void StartPlaylist(Patient patient)
     {
         DataManager dm = DataManager.instance;
@@ -66,8 +58,7 @@ public class StartGameButtton : MonoBehaviour
             return;
         }
 
-        if (patient.GamePlaylist == null ||
-            patient.GamePlaylist.Count == 0)
+        if (patient.GamePlaylist == null || patient.GamePlaylist.Count == 0)
         {
             Debug.LogError("StartPlaylist → Empty Playlist");
             return;
@@ -75,7 +66,7 @@ public class StartGameButtton : MonoBehaviour
 
         dm.CurrentPatient = patient;
 
-        // ⭐ Copy playlist (never reference original)
+        // Copy playlist 
         dm.CurrentPlaylist = new List<GameSession>();
 
         foreach (var s in patient.GamePlaylist)
@@ -87,37 +78,23 @@ public class StartGameButtton : MonoBehaviour
             runtime.durationSeconds = s.durationSeconds;
 
             dm.CurrentPlaylist.Add(runtime);
-
-            Debug.Log(
-                $"Copied → {runtime.GamePrefab.ExerciseName} " +
-                $"ThemeIndex:{runtime.SelectedThemeIndex} " +
-                $"Time:{runtime.durationSeconds}");
         }
-
         dm.CurrentGameIndex = 0;
-
         LoadNextScene();
     }
 
-    // =========================================
-    // LOAD NEXT GAME SCENE (THEME VERSION)
-    // =========================================
+    // LOAD NEXT GAME SCENE 
     public static void LoadNextScene()
     {
-        
-
-        Debug.Log("LoadNextScene ENTERED | Index = " +
-    DataManager.instance.CurrentGameIndex);
 
         DataManager dm = DataManager.instance;
-
         if (dm == null)
         {
             Debug.LogError("LoadNextScene → DataManager missing");
             return;
         }
 
-        // ===== PLAYLIST FINISHED =====
+        // FINISHED 
         if (dm.CurrentGameIndex >= dm.CurrentPlaylist.Count)
         {
             Debug.Log("Playlist finished → Returning to Menu");
@@ -126,8 +103,7 @@ public class StartGameButtton : MonoBehaviour
             return;
         }
 
-        GameSession session =
-            dm.CurrentPlaylist[dm.CurrentGameIndex];
+        GameSession session = dm.CurrentPlaylist[dm.CurrentGameIndex];
 
         if (session == null || session.GamePrefab == null)
         {
@@ -137,25 +113,21 @@ public class StartGameButtton : MonoBehaviour
 
         Game game = session.GamePrefab;
 
-        if (game.ThemesList == null ||
-            game.ThemesList.Count == 0)
+        if (game.ThemesList == null || game.ThemesList.Count == 0)
         {
             Debug.LogError("Game has no themes assigned!");
             return;
         }
 
-        // ===== THEME SAFETY =====
         int themeIndex = session.SelectedThemeIndex;
 
-        if (themeIndex < 0 ||
-            themeIndex >= game.ThemesList.Count)
+        if (themeIndex < 0 || themeIndex >= game.ThemesList.Count)
         {
             Debug.LogWarning("Theme index invalid → Reset to 0");
             themeIndex = 0;
         }
 
-        Themes selectedTheme =
-            game.ThemesList[themeIndex];
+        Themes selectedTheme = game.ThemesList[themeIndex];
 
         if (string.IsNullOrEmpty(selectedTheme.SceneName))
         {
@@ -163,16 +135,9 @@ public class StartGameButtton : MonoBehaviour
             return;
         }
 
-        // ===== STORE TIMER =====
-        dm.CurrentSceneDuration =
-            session.durationSeconds;
+        dm.CurrentSceneDuration = session.durationSeconds;
 
-        Debug.Log(
-            $"Loading → Game:{game.ExerciseName} | " +
-            $"Theme:{selectedTheme.ThemeName} | " +
-            $"Scene:{selectedTheme.SceneName} | " +
-            $"Duration:{dm.CurrentSceneDuration}");
-
+        Debug.Log($"Loading → Game:{game.ExerciseName} | " + $"Theme:{selectedTheme.ThemeName} | " + $"Scene:{selectedTheme.SceneName} | " + $"Duration:{dm.CurrentSceneDuration}");
         SceneManager.LoadScene(selectedTheme.SceneName);
     }
 }
