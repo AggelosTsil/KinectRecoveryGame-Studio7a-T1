@@ -8,9 +8,10 @@ using UnityEngine.InputSystem;
 public class TimerUI : MonoBehaviour
 {
     public TextMeshProUGUI UITimer;
+    public PauseScreen pauseScreen;
     public float Timer;
     public float AdjustSensitivity;
-    bool Active;
+    public bool Active;
     bool finished = false;
 
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class TimerUI : MonoBehaviour
             {
                 Debug.Log("Timer stoped");
             }
+            pauseScreen.Pause(Active);
         }
         
     }
