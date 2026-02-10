@@ -56,6 +56,8 @@ public class MinutesToSeconds : MonoBehaviour
         {
             gameSession.durationSeconds = finalTime;
         }
+        DataManager.instance.SaveAllPatients();
+
 
         // Old Start Button logic
         //DataManager.instance.TransportValue = finalTime;

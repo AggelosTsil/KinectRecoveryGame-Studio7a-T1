@@ -26,8 +26,4 @@ public class Game : MonoBehaviour
         SceneName = ThemesList[0].SceneName;
     }
 
-    public void ChangeTheme()
-  {
-    
-  }
 }

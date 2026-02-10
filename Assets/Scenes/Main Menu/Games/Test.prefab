@@ -48,5 +48,5 @@ MonoBehaviour:
   ExerciseName: 
   SceneName: 
   ThemesList:
-  - ThemeName: zoo
-    SceneName: Flamingo pose
+  - ThemeName: Test
+    SceneName: Sky

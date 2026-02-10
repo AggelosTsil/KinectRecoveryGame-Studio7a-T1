@@ -37,5 +37,9 @@ public class ChangeTheme : MonoBehaviour
     {
         gameCard.sessionData.SelectedThemeIndex = index;
         Debug.Log("Theme changed → " + gameCard.sessionData.GamePrefab.ThemesList[index].ThemeName);
+        Debug.Log("Session theme now → " + gameCard.sessionData.SelectedThemeIndex);
+        DataManager.instance.SaveAllPatients();
+
+
     }
 }

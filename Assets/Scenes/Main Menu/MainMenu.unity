@@ -1302,7 +1302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310298098}
   m_Layer: 0
-  m_Name: ListOfPatients
+  m_Name: AllPatients
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1320,8 +1320,7 @@ Transform:
   m_LocalPosition: {x: 898.8445, y: 479.56253, z: -0.072923966}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1003403044}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &335063212
@@ -4348,6 +4347,7 @@ GameObject:
   - component: {fileID: 766886303}
   - component: {fileID: 766886302}
   - component: {fileID: 766886301}
+  - component: {fileID: 766886304}
   m_Layer: 5
   m_Name: SettingButton
   m_TagString: Untagged
@@ -4418,7 +4418,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 766886302}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766886304}
+        m_TargetAssemblyTypeName: SaveTestButton, Assembly-CSharp
+        m_MethodName: SaveNow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &766886302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4457,6 +4469,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766886299}
   m_CullTransparentMesh: 1
+--- !u!114 &766886304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766886299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc293f82ec6897878ba7f5a3734b8007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllPatients: []
+  AllGames: []
 --- !u!1 &786717298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5775,11 +5801,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 970349561}
   m_CullTransparentMesh: 1
---- !u!224 &1003403044 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-  m_PrefabInstance: {fileID: 1034758164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1005452438
 GameObject:
   m_ObjectHideFlags: 0
@@ -6089,148 +6110,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025874571}
   m_CullTransparentMesh: 1
---- !u!1001 &1034758164
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 310298098}
-    m_Modifications:
-    - target: {fileID: 1886894186010960922, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_Name
-      value: John Doe
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309885906530133386, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: Name
-      value: John
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: Notes
-      value: Little baby got a broken heart? is little baby gonna cry? go play kinect
-        or something
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: email
-      value: JD@gmail.com
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: Number
-      value: 123456789
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: Surname
-      value: Doe
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: Diagnosis
-      value: Broken Heart
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: Name_Doctor
-      value: Doctor
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: email_Doctor
-      value: DW@gmail.com
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: Number_Doctor
-      value: 1234567778
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: Surname_Doctor
-      value: White
-      objectReference: {fileID: 0}
-    - target: {fileID: 8018528779127979702, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
-      propertyPath: GamePlaylist.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
 --- !u!1 &1066447397
 GameObject:
   m_ObjectHideFlags: 0
@@ -9058,6 +8937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1588588236}
+  - component: {fileID: 1588588237}
   m_Layer: 5
   m_Name: PatientsPage
   m_TagString: Untagged
@@ -9087,6 +8967,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1588588237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588588235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2f7caa41dd3795691fbdfd293bdba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonPrefab: {fileID: 2728560928371363702, guid: e2ee22ecab2ba97df9dcefc024160daf, type: 3}
+  ButtonListParent: {fileID: 159176115}
+  PatientsParent: {fileID: 310298098}
+  LoadPatient: {fileID: 1875927917}
+  OffStuff:
+  - {fileID: 559956548}
+  - {fileID: 1588588235}
+  - {fileID: 492259221}
+  OnStuff:
+  - {fileID: 1875927915}
 --- !u!1 &1677779366
 GameObject:
   m_ObjectHideFlags: 0
@@ -9905,6 +9807,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1588588237}
+        m_TargetAssemblyTypeName: PatientButtonLoader, Assembly-CSharp
+        m_MethodName: CreateButtons
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12367,6 +12281,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5f5c6c8cf03a620b07d7f16ae03f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllPatients: []
+  AllGames:
+  - {fileID: 6322093823076163703, guid: f786f254a8f043c10a9678be986df108, type: 3}
+  - {fileID: 401021425200150609, guid: e3abaaf9daa99ae2c92d8ef05f069487, type: 3}
+  - {fileID: 4233091775023311636, guid: 62fd6f9f4f32e5c849a4e616458a4bce, type: 3}
+  PatientPrefab: {fileID: 1886894186010960922, guid: 648cef3c7b5b32d75993a0c87bd35ecb, type: 3}
+  PatientsParent: {fileID: 310298098}
   CurrentPatient: {fileID: 0}
   CurrentPlaylist: []
   CurrentGameIndex: 0
@@ -12437,6 +12358,14 @@ PrefabInstance:
     - target: {fileID: 2765825495972764851, guid: 62fd6f9f4f32e5c849a4e616458a4bce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233091775023311636, guid: 62fd6f9f4f32e5c849a4e616458a4bce, type: 3}
+      propertyPath: ThemesList.Array.data[0].SceneName
+      value: SampleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233091775023311636, guid: 62fd6f9f4f32e5c849a4e616458a4bce, type: 3}
+      propertyPath: ThemesList.Array.data[0].ThemeName
+      value: Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
