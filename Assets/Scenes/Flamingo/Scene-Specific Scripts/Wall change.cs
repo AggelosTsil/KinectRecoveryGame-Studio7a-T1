@@ -20,6 +20,8 @@ public class Wallchange : MonoBehaviour
 
     public float Timer;
     public float ChangeTextLifespan;
+    public GameObject RightImage;
+    public GameObject LeftImage;
     float TimerIni;
     // Start is called before the first frame update
     void Start()
@@ -65,13 +67,17 @@ public class Wallchange : MonoBehaviour
             if (pose.poseModel == RightLeg)
             {
                 pose.poseModel = LeftLeg;
-                ChangeText.text = "Lift RIGHT Leg";
+                //ChangeText.text = "Lift RIGHT Leg";
+                RightImage.SetActive(true);
+                LeftImage.SetActive(false);
                 FlamingoFlip();
             }
             else
             {
                 pose.poseModel = RightLeg;
-                ChangeText.text = "Lift LEFT Leg";
+                //ChangeText.text = "Lift LEFT Leg";
+                RightImage.SetActive(false);
+                LeftImage.SetActive(true);
                 FlamingoFlip();
 
             }
