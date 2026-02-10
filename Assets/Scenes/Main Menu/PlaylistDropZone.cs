@@ -25,9 +25,7 @@ public class PlaylistDropZone : MonoBehaviour, IDropHandler
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            RectTransform child =
-                transform.GetChild(i).GetComponent<RectTransform>();
-
+            RectTransform child = transform.GetChild(i).GetComponent<RectTransform>();
             if (dropPosition.y > child.position.y)
                 return i;
         }
@@ -37,13 +35,9 @@ public class PlaylistDropZone : MonoBehaviour, IDropHandler
 
     void UpdatePlaylistOrder()
     {
-        Patient patient =
-            DataManager.instance.CurrentPatient;
-
+        Patient patient = DataManager.instance.CurrentPatient;
         if (patient == null) return;
-
         patient.GamePlaylist.Clear();
-
         foreach (Transform child in transform)
         {
             GameCard card = child.GetComponent<GameCard>();

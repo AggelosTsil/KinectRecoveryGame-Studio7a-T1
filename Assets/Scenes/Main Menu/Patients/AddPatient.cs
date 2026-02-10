@@ -52,63 +52,63 @@ public class AddPatient : MonoBehaviour
         Diagnosis.text,Notes.text);
     }
 
-    public void AddPatientMethod(String Name, String Surname, String Number, String email, String Name_Doctor,
-   String Surname_Doctor, String Number_Doctor, String email_Doctor, String Diagnosis, String Notes)
+    public void AddPatientMethod(
+    string Name,
+    string Surname,
+    string Number,
+    string email,
+    string Name_Doctor,
+    string Surname_Doctor,
+    string Number_Doctor,
+    string email_Doctor,
+    string Diagnosis,
+    string Notes)
+{
+    var newPatient =
+        Instantiate(Patient, AllPatients.transform);
+
+    var PatientData =
+        newPatient.GetComponent<Patient>();
+
+    if (Name == "")
+        Name = "-";
+
+    newPatient.name = Name + " " + Surname;
+
+   
+    PatientData.Name = Name;
+    PatientData.Surname = Surname;
+    PatientData.Number = Number;
+    PatientData.email = email;
+
+  
+    PatientData.Name_Doctor = Name_Doctor;
+    PatientData.Surname_Doctor = Surname_Doctor;
+    PatientData.Number_Doctor = Number_Doctor;
+    PatientData.email_Doctor = email_Doctor;
+
+
+    PatientData.Diagnosis = Diagnosis;
+    PatientData.Notes = Notes;
+    PatientData.Sessions = 0;
+
+    //creates a ""default"" playlist, no longer in use for use but I am afraid to delete it there are like 100 scripts here
+    PatientData.GamePlaylist = new List<GameSession>();
+
+    foreach (var templateSession in DefaultPlaylist)
     {
-        var newPatient = Instantiate (Patient, AllPatients.transform);
-        var newpatientButton = Instantiate (Button, ButtonList.transform);
-        var PatientData = newPatient.GetComponent<Patient>();
-        if (Name == "")
+        PatientData.GamePlaylist.Add(new GameSession()
         {
-            Name = "-";
-        }
-        newPatient.name = Name + " "+Surname;
-        newpatientButton.name = Name + " "+Surname + " Button";
-
-        PatientData.Name = Name;
-        PatientData.Surname = Surname;
-        PatientData.Number = Number;
-        PatientData.email = email;
-        PatientData.Name_Doctor = Name_Doctor;
-        PatientData.Surname_Doctor = Surname_Doctor;
-        PatientData.Number_Doctor = Number_Doctor;
-        PatientData.email_Doctor = email_Doctor;
-        PatientData.Diagnosis = Diagnosis;
-        PatientData.Notes = Notes;
-        PatientData.Sessions = 0;
-
-        TextMeshProUGUI Button_Name = newpatientButton.transform.GetChild(0).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Button_Diagnosis = newpatientButton.transform.GetChild(0).transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>();
-
-
-        Button_Name.text = Name + " "+Surname;
-        Button_Diagnosis.text = Diagnosis;
-        newpatientButton.GetComponentInChildren<Patient_Button>().Patient = newPatient;
-        newpatientButton.GetComponentInChildren<Button>().onClick.AddListener(newpatientButton.GetComponentInChildren<Patient_Button>().OnClick);
-        newpatientButton.GetComponentInChildren<Patient_Button>().LoadPatient = LoadPatient;
-        for (int i = 0; i < OffStuff.Length; i++ )
-        {
-            newpatientButton.GetComponentInChildren<Patient_Button>().OffStuff[i] = OffStuff[i];
-        }
-        for (int i = 0; i < OnStuff.Length; i++ )
-        {
-            newpatientButton.GetComponentInChildren<Patient_Button>().OnStuff[i] = OnStuff[i];
-        }
-
-
-
-       PatientData.GamePlaylist = new List<GameSession>();
-
-        foreach (var templateSession in DefaultPlaylist)
-        {
-            PatientData.GamePlaylist.Add(new GameSession()
-            {
-                GamePrefab = templateSession.GamePrefab,
-                durationSeconds = templateSession.durationSeconds
-            });
-        }
-
-    
+            GamePrefab = templateSession.GamePrefab,
+            durationSeconds = templateSession.durationSeconds
+        });
     }
+
+    //datamanager
+    DataManager.instance.AllPatients.Add(newPatient);
+    DataManager.instance.SaveAllPatients();
+
+}
+
    
 }

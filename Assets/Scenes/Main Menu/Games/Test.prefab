@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gameid: 0
-  ExerciseName: 
+  ExerciseName: Test
   SceneName: 
   ThemesList:
-  - ThemeName: zoo
-    SceneName: Flamingo pose
+  - ThemeName: Test
+    SceneName: Sky

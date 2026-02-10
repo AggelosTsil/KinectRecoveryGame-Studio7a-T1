@@ -25,6 +25,8 @@ public class GameCardDrag : MonoBehaviour,
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.position = eventData.position;
+        DataManager.instance.SaveAllPatients();
+
     }
 
     public void OnEndDrag(PointerEventData eventData)

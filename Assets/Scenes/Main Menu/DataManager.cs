@@ -1,46 +1,119 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
-    private float transportvalue;
-    public float TransportValue { get => transportvalue; set => transportvalue = value; }
     public static DataManager instance;
+    // ALL PATIENTS (SAVE SOURCE)
+    public List<GameObject> AllPatients = new List<GameObject>();
+    // GAME DATABASE (FOR LOAD)
+    public List<Game> AllGames = new List<Game>();
+    public GameObject PatientPrefab;
+    public Transform PatientsParent;
+    // RUNTIME SESSION DATA
     public Patient CurrentPatient;
     public List<GameSession> CurrentPlaylist = new List<GameSession>();
-    public int CurrentGameIndex = 0;
+    public int CurrentGameIndex;
     public float CurrentSceneDuration;
 
 
-
     void Awake()
-{
-    if (instance == null)
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-        Debug.Log("DataManager Created → " + GetInstanceID());
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-    else if (instance != this)
+
+    void OnEnable()
     {
-        Destroy(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainMenu")
+        {
+            FindSceneReferences();
+            ReloadPatientsFromSave();
+        }
+    }
+    public void FindSceneReferences()
+    {
+        if (PatientsParent == null)
+        {
+            GameObject parent = GameObject.Find("AllPatients");
+
+            if (parent != null)
+                PatientsParent = parent.transform;
+            else
+                Debug.LogError("AllPatients parent not found!");
+        }
+    }
+
+    public void ReloadPatientsFromSave()
+    {
+        AllPatients.Clear();
+        LoadAllPatients();
+        PatientsParent = GameObject.Find("AllPatients").transform;
+
     }
 
 
-}
+    public void LoadAllPatients()
+    {
+        Debug.Log("Loading Patients...");
 
-void OnEnable()
-{
-    Debug.Log("DataManager Enabled → " + GetInstanceID());
-}
+        List<PatientSaveData> saves = PatientSaveSystem.Load();
 
-void OnDisable()
-{
-    Debug.Log("DataManager Disabled → " + GetInstanceID());
-}
+        Debug.Log("Save File Patients = " + saves.Count);
 
+        foreach (var save in saves)
+        {
+            // Create Patient GameObject
+            GameObject go = Instantiate(PatientPrefab, PatientsParent);
 
+            Patient patient = go.GetComponent<Patient>();
 
-   
+            // Apply saved data
+            PatientSaveConverter.ApplySaveToPatient(patient, save, AllGames);
+
+            // Add to runtime list
+            AllPatients.Add(go);
+
+            Debug.Log("Loaded Patient → " + patient.Name);
+        }
+    }
+
+    public void SaveAllPatients()
+    {
+        List<PatientSaveData> saves = new List<PatientSaveData>();
+
+        foreach (var go in AllPatients)
+        {
+            if (go == null) continue;
+
+            Patient p = go.GetComponent<Patient>();
+
+            if (p == null) continue;
+
+            saves.Add(PatientSaveConverter.ToSave(p));
+        }
+
+        PatientSaveSystem.Save(saves);
+
+        Debug.Log("AUTOSAVE COMPLETE → Patients = " + saves.Count);
+    }
+
 }

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gameid: 0
-  ExerciseName: 
+  ExerciseName: Leg Balance
   SceneName: 
   ThemesList:
   - ThemeName: Zoo
