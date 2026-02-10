@@ -34,6 +34,15 @@ public class TimerUI : MonoBehaviour
     {
         if (context.performed)
         {
+            if (finished)
+            {
+                if (DataManager.instance != null)
+                {
+                    DataManager.instance.CurrentGameIndex++;
+                    StartGameButtton.LoadNextScene();
+                }
+                return;
+            }
             Active = !Active;
             if (Active)
             {
@@ -74,6 +83,8 @@ public class TimerUI : MonoBehaviour
             Timer = 0;
             TimerOver();
         }
+
+        
     }
 
 
@@ -88,11 +99,7 @@ public class TimerUI : MonoBehaviour
 {
     UITimer.text = "Well Done!";
 
-    if (DataManager.instance != null)
-    {
-        DataManager.instance.CurrentGameIndex++;
-        StartGameButtton.LoadNextScene();
-    }
+    
 }
 
 }
