@@ -26,21 +26,21 @@ public class StartGameButtton : MonoBehaviour
             return;
         }
 
-        // At least one game must have duration > 0
-        bool valid = false;
+        bool allValid = true;
 
         foreach (var s in dm.CurrentPatient.GamePlaylist)
         {
-            if (s != null &&
-                s.GamePrefab != null &&
-                s.durationSeconds > 0)
+            if (s == null ||
+                s.GamePrefab == null ||
+                s.durationSeconds <= 0)
             {
-                valid = true;
+                allValid = false;
                 break;
             }
         }
 
-        button.interactable = valid;
+        button.interactable = allValid;
+
     }
 
     // =========================================

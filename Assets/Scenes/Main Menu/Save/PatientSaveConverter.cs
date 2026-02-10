@@ -33,7 +33,9 @@ public static class PatientSaveConverter
             {
                 GameID = s.GamePrefab.Gameid,
                 ThemeIndex = s.SelectedThemeIndex,
-                Duration = s.durationSeconds
+                Duration = s.durationSeconds,
+                Reps = s.Reps,
+                Difficulty = s.Difficulty
             });
         }
 
@@ -80,6 +82,8 @@ public static class PatientSaveConverter
             session.GamePrefab = game;
             session.SelectedThemeIndex = s.ThemeIndex;
             session.durationSeconds = s.Duration;
+            session.Reps = s.Reps;
+            session.Difficulty = s.Difficulty;
 
             patient.GamePlaylist.Add(session);
         }

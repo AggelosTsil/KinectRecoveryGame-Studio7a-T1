@@ -9,7 +9,8 @@ public class GameSession
     public Game GamePrefab;
     public float durationSeconds;
     public int SelectedThemeIndex;
-
+    public int Reps;
+    public float Difficulty;
 }
 
 public class Patient : MonoBehaviour
