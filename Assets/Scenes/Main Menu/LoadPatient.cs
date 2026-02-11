@@ -17,7 +17,7 @@ public class LoadPatient : MonoBehaviour
     public void LoadPatientData(GameObject patientGO)
     {
         Patient patient = patientGO.GetComponent<Patient>();
-        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = patientGO.name;
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = patientGO.GetComponent<Patient>().Name +" "+patientGO.GetComponent<Patient>().Surname;
         DataManager.instance.CurrentPatient = patient;
         ClearGameCards();
         SpawnPlaylist(patient);

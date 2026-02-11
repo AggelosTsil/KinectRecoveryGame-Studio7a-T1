@@ -1,36 +1,36 @@
 {
     "Patients": [
         {
-            "Name": "-",
-            "Surname": "",
-            "Number": "",
-            "Email": "",
-            "DoctorName": "",
-            "DoctorSurname": "",
-            "DoctorNumber": "",
-            "DoctorEmail": "",
-            "Diagnosis": "",
-            "Notes": "",
+            "Name": "dsadsaf",
+            "Surname": "fda",
+            "Number": "sadfsaf",
+            "Email": "safdadsf",
+            "DoctorName": "sasdsa",
+            "DoctorSurname": "asdasf",
+            "DoctorNumber": "dadsa",
+            "DoctorEmail": "fasfdsda",
+            "Diagnosis": "safsadasfasf",
+            "Notes": "asfdasdsafdaf",
             "Sessions": 3,
             "Playlist": [
                 {
                     "GameID": 0,
                     "ThemeIndex": 0,
-                    "Duration": 300.0,
+                    "Duration": 10.0,
                     "Reps": 0,
                     "Difficulty": 1.0
                 },
                 {
                     "GameID": 0,
                     "ThemeIndex": 2,
-                    "Duration": 300.0,
+                    "Duration": 10.0,
                     "Reps": 0,
                     "Difficulty": 1.0
                 },
                 {
                     "GameID": 0,
                     "ThemeIndex": 0,
-                    "Duration": 300.0,
+                    "Duration": 10.0,
                     "Reps": 0,
                     "Difficulty": 1.0
                 }

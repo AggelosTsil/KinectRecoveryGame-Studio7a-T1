@@ -21,7 +21,7 @@ public class TimerUI : MonoBehaviour
 
         {
             Timer = DataManager.instance.CurrentSceneDuration;
-            Active = true;
+             Active = false;
         }
         else
         {
