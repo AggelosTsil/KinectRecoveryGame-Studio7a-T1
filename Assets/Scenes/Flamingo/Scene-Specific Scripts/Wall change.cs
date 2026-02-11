@@ -15,10 +15,13 @@ public class Wallchange : MonoBehaviour
     public GameObject FlamingoZone;
 
     public Text ChangeText;
-
+    public Image image;
+    public Sprite LeftSprite;
+    public Sprite RightSprite;
     public List<SpriteRenderer> flamingoSprites;
 
     public float Timer;
+    
     public float ChangeTextLifespan;
     float TimerIni;
     // Start is called before the first frame update
@@ -65,13 +68,15 @@ public class Wallchange : MonoBehaviour
             if (pose.poseModel == RightLeg)
             {
                 pose.poseModel = LeftLeg;
-                ChangeText.text = "Lift RIGHT Leg";
+                //ChangeText.text = "Lift RIGHT Leg";
+                image.sprite = RightSprite;
                 FlamingoFlip();
             }
             else
             {
                 pose.poseModel = RightLeg;
-                ChangeText.text = "Lift LEFT Leg";
+                //ChangeText.text = "Lift LEFT Leg";
+                image.sprite = LeftSprite;
                 FlamingoFlip();
 
             }
